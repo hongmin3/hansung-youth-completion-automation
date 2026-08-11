@@ -84,7 +84,26 @@ def gid_from_url(url):
     return fragment.get("gid", ["0"])[0]
 
 
-def load_sheet_rows():
+def load_sheet_rows(sheets_service=None):
+    if sheets_service is not None:
+        spreadsheet_id = spreadsheet_id_from_url(config.SHEET_URL)
+        tab_name = getattr(config, "SHEET_TAB_NAME", "통합 명단")
+        result = sheets_service.spreadsheets().values().get(
+            spreadsheetId=spreadsheet_id,
+            range=f"'{tab_name}'!A:G",
+        ).execute()
+        values = result.get("values", [])
+        if not values:
+            return []
+        headers = values[0]
+        rows = []
+        for sheet_row, values_row in enumerate(values[1:], start=2):
+            padded = values_row + [""] * (len(headers) - len(values_row))
+            row = dict(zip(headers, padded))
+            row["_sheet_row"] = sheet_row
+            rows.append(row)
+        return rows
+
     sheet_url = config.SHEET_URL
     base_url = sheet_url.split("/edit")[0]
     csv_url = f"{base_url}/export?format=csv&gid={gid_from_url(sheet_url)}"
@@ -96,6 +115,10 @@ def load_sheet_rows():
         },
         timeout=30,
     )
+    if response.status_code == 401:
+        raise RuntimeError(
+            "Google 시트 쿠키가 만료되었습니다. credentials.json을 설정해 OAuth로 연결하세요."
+        )
     response.raise_for_status()
     reader = csv.DictReader(io.StringIO(response.content.decode("utf-8-sig")))
     rows = []
@@ -318,8 +341,8 @@ def main():
     except ModuleNotFoundError:
         raise SystemExit("python3 -m pip install -r requirements.txt 를 먼저 실행하세요.")
 
-    sheets_service = get_sheets_service(required=options.execute) if options.execute else None
-    rows = load_sheet_rows()
+    sheets_service = get_sheets_service(required=options.execute)
+    rows = load_sheet_rows(sheets_service)
     log(f"모드: {'실제입력' if options.execute else '드라이런'}, 대상 행: {len(rows)}")
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)

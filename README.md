@@ -56,8 +56,12 @@ cp config.example.py config.py
 - `SHEET_URL`: 통합 수료 명단 URL. `gid`까지 포함합니다.
 - `SHEET_TAB_NAME`: 기본값 `통합 명단`
 - `GOOGLE_COOKIES`: CSV 다운로드에 사용할 Google 쿠키
+- `GOOGLE_OAUTH_CLIENT_FILE`: Google Cloud에서 내려받은 Desktop OAuth JSON
+- `GOOGLE_OAUTH_TOKEN_FILE`: 최초 승인 후 자동 생성되는 토큰 파일
 - `DIMODE_URL`, `USER_ID`, `USER_PW`: 디모데 로그인 정보
 - `EDU_COURSE_MAP`: 추가로 확인된 정확한 `청년-` 과정 매핑
+
+OAuth 연결이 준비되면 시트 읽기와 `입력여부` 체크를 모두 Google Sheets API로 처리합니다. `credentials.json`이 없는 드라이런에서는 기존 `GOOGLE_COOKIES` 방식으로 읽지만, 쿠키가 만료되면 `401`이 발생하므로 OAuth 사용을 권장합니다.
 
 시트 열은 다음 순서를 사용합니다.
 
