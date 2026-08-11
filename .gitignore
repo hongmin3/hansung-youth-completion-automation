@@ -1,0 +1,13 @@
+config.py
+credentials.json
+token.json
+user_data/
+output/
+__pycache__/
+*.pyc
+result_log.txt
+debug_*.html
+debug_*.png
+.DS_Store
+.venv/
+venv/
