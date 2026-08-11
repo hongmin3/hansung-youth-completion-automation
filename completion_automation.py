@@ -84,7 +84,19 @@ def gid_from_url(url):
     return fragment.get("gid", ["0"])[0]
 
 
-def load_sheet_rows(sheets_service=None):
+def rows_from_csv(path):
+    with Path(path).open(newline="", encoding="utf-8-sig") as stream:
+        reader = csv.DictReader(stream)
+        rows = []
+        for sheet_row, row in enumerate(reader, start=2):
+            row["_sheet_row"] = sheet_row
+            rows.append(row)
+        return rows
+
+
+def load_sheet_rows(sheets_service=None, csv_path=None):
+    if csv_path:
+        return rows_from_csv(csv_path)
     if sheets_service is not None:
         spreadsheet_id = spreadsheet_id_from_url(config.SHEET_URL)
         tab_name = getattr(config, "SHEET_TAB_NAME", "통합 명단")
@@ -131,14 +143,15 @@ def load_sheet_rows(sheets_service=None):
 def parse_person_card(text):
     name_match = re.search(r"이름\s*([^\s(]+)\s*\(", text)
     phone_match = re.search(r"핸드폰\s*([0-9\- ]{10,15})", text)
-    group_match = re.search(r"부서보기[^\n]*\n\s*([^\n]+)", text)
+    group_match = re.search(r"([^\s>(]+군)(?:\([^)]*\))?\s*>\s*([^>\n]+)", text)
+    activity_match = re.search(r"교인\s*>\s*청년\s*\(([A-Z])\)", text)
     name = re.sub(r"[A-Z]$", "", name_match.group(1) if name_match else "")
-    path = (group_match.group(1) if group_match else "").split(">")
     return {
         "name": name,
         "phone": format_phone(phone_match.group(1) if phone_match else ""),
-        "army": normalize_text(path[0]) if path else "",
-        "team": normalize_text(path[1]) if len(path) > 1 else "",
+        "army": normalize_text(group_match.group(1)) if group_match else "",
+        "team": normalize_text(group_match.group(2)) if group_match else "",
+        "activity": activity_match.group(1) if activity_match else "",
     }
 
 
@@ -150,7 +163,29 @@ def identity_matches(candidate, row):
     )
 
 
+def same_name_and_group(candidate, row):
+    return (
+        candidate["name"] == normalize_text(row.get("이름") or row.get("성명"))
+        and normalize_group(candidate["army"]) == normalize_group(row.get("군"))
+    )
+
+
+def same_active_name_and_group(candidate, row):
+    return same_name_and_group(candidate, row) and candidate.get("activity") in {"A", "B"}
+
+
+def reset_person_search(right_frame):
+    """이전 사람의 검색 조건이 다음 검색에 남지 않도록 검색 폼을 초기화한다."""
+    right_frame.locator(
+        "#ctl00_cph1_PersonListYouth1_tabConSch_tabPnSch0_txtNameSch0"
+    ).fill("")
+    right_frame.locator(
+        "#ctl00_cph1_PersonListYouth1_tabConSch_tabPnSch0_txtHandphoneSch0"
+    ).fill("")
+
+
 def search_person_cards(right_frame, *, name="", phone=""):
+    reset_person_search(right_frame)
     if name:
         field = right_frame.locator("#ctl00_cph1_PersonListYouth1_tabConSch_tabPnSch0_txtNameSch0")
     else:
@@ -167,7 +202,7 @@ def enrich_phone(right_frame, row):
     for index in range(cards.count()):
         card = cards.nth(index)
         candidate = parse_person_card(card.inner_text())
-        if identity_matches(candidate, row) and candidate["phone"]:
+        if same_active_name_and_group(candidate, row) and candidate["phone"]:
             matched.append(candidate["phone"])
     unique = sorted(set(matched))
     return unique[0] if len(unique) == 1 else ""
@@ -175,17 +210,35 @@ def enrich_phone(right_frame, row):
 
 def find_exact_person_card(right_frame, row):
     phone = format_phone(row.get("핸드폰") or row.get("전화번호") or row.get("연락처"))
-    if not phone:
-        return None, "전화번호없음"
-    cards = search_person_cards(right_frame, phone=phone)
+    expected_name = normalize_text(row.get("이름") or row.get("성명"))
+    if phone:
+        cards = search_person_cards(right_frame, phone=phone)
+        phone_matched = []
+        for index in range(cards.count()):
+            card = cards.nth(index)
+            candidate = parse_person_card(card.inner_text())
+            if candidate["name"] == expected_name and candidate["phone"] == phone:
+                phone_matched.append(card)
+        if len(phone_matched) == 1:
+            return phone_matched[0], "전화번호일치"
+        if len(phone_matched) > 1:
+            return None, "교인복수일치"
+
+    cards = search_person_cards(right_frame, name=expected_name)
     matched = []
     for index in range(cards.count()):
         card = cards.nth(index)
-        if identity_matches(parse_person_card(card.inner_text()), row):
-            matched.append(card)
-    if len(matched) != 1:
-        return None, "정확한교인없음" if not matched else "교인복수일치"
-    return matched[0], "일치"
+        candidate = parse_person_card(card.inner_text())
+        if same_active_name_and_group(candidate, row):
+            matched.append((card, candidate))
+    if len(matched) == 1:
+        card, candidate = matched[0]
+        if candidate["phone"]:
+            row["핸드폰"] = candidate["phone"]
+        return card, "이름군일치"
+    if len(matched) > 1:
+        return None, "교인복수일치"
+    return None, "정확한교인없음"
 
 
 def course_map():
@@ -233,14 +286,18 @@ def get_sheets_service(required=False):
     return build("sheets", "v4", credentials=credentials)
 
 
-def mark_sheet_complete(service, sheet_row):
+def update_sheet_result(service, row):
     spreadsheet_id = spreadsheet_id_from_url(config.SHEET_URL)
     tab_name = getattr(config, "SHEET_TAB_NAME", "통합 명단")
-    service.spreadsheets().values().update(
+    sheet_row = row["_sheet_row"]
+    data = []
+    phone = format_phone(row.get("핸드폰"))
+    if phone:
+        data.append({"range": f"'{tab_name}'!E{sheet_row}", "values": [[phone]]})
+    data.append({"range": f"'{tab_name}'!G{sheet_row}", "values": [[True]]})
+    service.spreadsheets().values().batchUpdate(
         spreadsheetId=spreadsheet_id,
-        range=f"'{tab_name}'!G{sheet_row}",
-        valueInputOption="RAW",
-        body={"values": [[True]]},
+        body={"valueInputOption": "RAW", "data": data},
     ).execute()
 
 
@@ -261,6 +318,7 @@ class Options:
     execute: bool
     limit: int | None
     skip_phone_lookup: bool
+    defer_sheet_checks: bool = False
 
 
 def process(page, right_frame, rows, options, sheets_service):
@@ -283,37 +341,35 @@ def process(page, right_frame, rows, options, sheets_service):
                 phone = enrich_phone(right_frame, row)
                 if phone:
                     row["핸드폰"] = phone
-            if not phone:
-                status = "전화번호없음"
+            card, match_status = find_exact_person_card(right_frame, row)
+            if card is None:
+                status = match_status
+            elif not options.execute:
+                status = "드라이런확인"
             else:
-                card, match_status = find_exact_person_card(right_frame, row)
-                if card is None:
-                    status = match_status
-                elif not options.execute:
-                    status = "드라이런확인"
-                else:
-                    name = normalize_text(row.get("이름") or row.get("성명"))
-                    with page.expect_popup() as popup_info:
-                        card.get_by_text(name, exact=False).first.click()
-                    popup = popup_info.value
-                    popup.wait_for_load_state("domcontentloaded")
-                    try:
-                        if popup.get_by_role("cell", name=education, exact=True).count() > 0:
-                            status = "이미입력됨"
-                        else:
-                            popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$imgAdd"]').click()
-                            popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$txtEdu"]').click()
-                            popup.get_by_role("menuitem", name=education, exact=True).click()
-                            popup.locator('select[name="ctl00$cph1$PersonModifyYouth1$EduList1$ucOkNOk$ddlData"]').select_option(COMPLETE_STATUS)
-                            popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$ucEdEday$txtDate"]').fill(COMPLETE_DATE)
-                            popup.locator('select[name="ctl00$cph1$PersonModifyYouth1$EduList1$ucYearEdID$ddlYear"]').select_option(COMPLETE_YEAR)
-                            popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$txtEdTeacher"]').fill(normalize_text(row.get("담당자")))
-                            popup.get_by_role("button", name="저장", exact=True).click()
-                            time.sleep(getattr(config, "SAVE_DELAY", 1.0))
-                            status = "입력완료"
-                        mark_sheet_complete(sheets_service, row["_sheet_row"])
-                    finally:
-                        popup.close()
+                name = normalize_text(row.get("이름") or row.get("성명"))
+                with page.expect_popup() as popup_info:
+                    card.get_by_text(name, exact=False).first.click()
+                popup = popup_info.value
+                popup.wait_for_load_state("domcontentloaded")
+                try:
+                    if popup.get_by_role("cell", name=education, exact=True).count() > 0:
+                        status = "이미입력됨"
+                    else:
+                        popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$imgAdd"]').click()
+                        popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$txtEdu"]').click()
+                        popup.get_by_role("menuitem", name=education, exact=True).click()
+                        popup.locator('select[name="ctl00$cph1$PersonModifyYouth1$EduList1$ucOkNOk$ddlData"]').select_option(COMPLETE_STATUS)
+                        popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$ucEdEday$txtDate"]').fill(COMPLETE_DATE)
+                        popup.locator('select[name="ctl00$cph1$PersonModifyYouth1$EduList1$ucYearEdID$ddlYear"]').select_option(COMPLETE_YEAR)
+                        popup.locator('input[name="ctl00$cph1$PersonModifyYouth1$EduList1$txtEdTeacher"]').fill(normalize_text(row.get("담당자")))
+                        popup.get_by_role("button", name="저장", exact=True).click()
+                        time.sleep(getattr(config, "SAVE_DELAY", 1.0))
+                        status = "입력완료"
+                    if sheets_service is not None:
+                        update_sheet_result(sheets_service, row)
+                finally:
+                    popup.close()
         plan.append({
             "시트행": row["_sheet_row"], "구분": course, "군": row.get("군", ""),
             "팀": row.get("팀", ""), "이름": row.get("이름", ""),
@@ -330,19 +386,25 @@ def parse_args():
     parser.add_argument("--execute", action="store_true", help="검증된 내역을 실제 저장")
     parser.add_argument("--limit", type=int, help="처리할 최대 인원 수")
     parser.add_argument("--skip-phone-lookup", action="store_true", help="빈 전화번호 자동 조회 생략")
+    parser.add_argument("--sheet-csv", help="Google Sheets 대신 읽을 CSV 파일 경로")
+    parser.add_argument(
+        "--defer-sheet-checks",
+        action="store_true",
+        help="OAuth가 없을 때 입력 성공 행 체크를 외부 작업으로 미룸",
+    )
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    options = Options(args.execute, args.limit, args.skip_phone_lookup)
+    options = Options(args.execute, args.limit, args.skip_phone_lookup, args.defer_sheet_checks)
     try:
         from playwright.sync_api import sync_playwright
     except ModuleNotFoundError:
         raise SystemExit("python3 -m pip install -r requirements.txt 를 먼저 실행하세요.")
 
-    sheets_service = get_sheets_service(required=options.execute)
-    rows = load_sheet_rows(sheets_service)
+    sheets_service = get_sheets_service(required=options.execute and not options.defer_sheet_checks)
+    rows = load_sheet_rows(sheets_service, args.sheet_csv)
     log(f"모드: {'실제입력' if options.execute else '드라이런'}, 대상 행: {len(rows)}")
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=False)
