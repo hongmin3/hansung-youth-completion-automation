@@ -29,6 +29,9 @@ DEFAULT_COURSE_MAP = {
     "교리대학": "청년-교리대학",
 }
 
+# 사용자가 추후 별도로 요청하기 전까지 디모데에 입력하지 않는 과정입니다.
+EXCLUDED_COURSES = {"기초반", "예배학교", "결혼예비학교"}
+
 
 def log(message):
     print(message)
@@ -165,6 +168,8 @@ def find_exact_person_card(right_frame, row):
 def course_map():
     mapping = dict(DEFAULT_COURSE_MAP)
     mapping.update(getattr(config, "EDU_COURSE_MAP", {}))
+    for category in EXCLUDED_COURSES:
+        mapping.pop(category, None)
     return mapping
 
 
