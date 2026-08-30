@@ -11,3 +11,5 @@ debug_*.png
 .DS_Store
 .venv/
 venv/
+.akela/
+akela/.cache/

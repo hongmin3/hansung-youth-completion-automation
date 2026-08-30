@@ -199,7 +199,6 @@ python main.py --skip-phone-lookup
 실제 실행을 중단하고 드라이런부터 다시 확인합니다. `completion_automation.py`의 검색·상세 창 선택자를 새 화면 구조에 맞게 수정해야 합니다.
 
 ## 2026-08-11 실제 실행 검증
-
 - 대상 206행
 - 입력 또는 기존 등록 확인 후 체크: 174행
 - 사용자 요청에 따라 제외하고 미입력: 31행
@@ -209,3 +208,13 @@ python main.py --skip-phone-lookup
 - 수료연도: `2026`
 
 미입력 1행은 `이현우(성경대학)`입니다. 시트의 `입력여부`를 체크하지 않았으므로 정보 보완 후 재실행 대상입니다. 윤진은 시트의 군을 `영군`에서 `임군`으로 정정한 뒤 입력을 완료했습니다.
+
+## AI Agent Context
+
+이 저장소는 작업별 AI 컨텍스트 관리를 위해 Akela를 사용합니다. Akela는 자동입력 Runtime Dependency가 아닙니다.
+
+- Knowledge: `knowledge/`
+- Agent Protocol: `akela/PROTOCOL.md`
+- Configuration: `akela.json`
+
+Codex와 Claude Code는 Task slice를 compile하고 드라이런·실행 규칙에 따라 작업한 뒤 Evidence와 outcome을 기록합니다. `akela stats`와 `akela/CURATE.md`는 사람이 Knowledge 승격·수정·폐기를 검토하는 데 사용합니다.
