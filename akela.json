@@ -1,0 +1,14 @@
+{
+  "domain": "default",
+  "activities": ["matching-debug", "policy-change", "auth-troubleshoot"],
+  "knowledge": [
+    {
+      "path": "knowledge",
+      "namespace": "REF",
+      "untagged": "derive"
+    }
+  ],
+  "learnings": "akela/LEARNINGS.md",
+  "runs": ".akela/runs",
+  "compiler": {}
+}
