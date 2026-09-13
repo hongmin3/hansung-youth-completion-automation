@@ -12,7 +12,8 @@ Google Sheet의 교육 수료 명단을 읽고 Playwright로 디모데 교인을
 - 로컬 비밀 설정: `config.py`
 - 의존성: `requirements.txt`
 - 운영 설명과 검증 기록: `README.md`
-- 별도 Apps Script 보존본: `apps-script/` (현재 운영 기준은 `../newacts-newcomer-automation/`)
+
+이 프로젝트는 Apps Script 코드를 갖지 않는다. Apps Script 운영 기준은 `../newacts-newcomer-automation/`이다.
 
 ## 작업 시작 순서
 
@@ -48,4 +49,4 @@ Google Sheet의 교육 수료 명단을 읽고 Playwright로 디모데 교인을
 
 ## 상세 정보
 
-설치, OAuth, 실행 옵션, 결과 상태, 문제 해결은 `README.md`에 있다. Apps Script 보존본의 구성은 `apps-script/README.md`를 필요할 때만 읽는다.
+설치, OAuth, 실행 옵션, 결과 상태, 문제 해결은 `README.md`에 있다. Apps Script 코드 위치는 `../docs/APPS_SCRIPT.md`를 필요할 때만 읽는다.

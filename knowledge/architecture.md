@@ -10,4 +10,4 @@ CLI option과 실행 orchestration은 `main.py`, 검색·동일인 검증·중�
 
 ## Apps Script boundary
 <!-- akela: id=apps-script-boundary scope=develop,operate tier=must -->
-`apps-script/`는 보존본이며 현재 Apps Script 운영 기준은 `../newacts-newcomer-automation/`이다. Apps Script 변경은 그 프로젝트로 라우팅한다.
+이 프로젝트는 Apps Script 코드를 소유하지 않는다. Apps Script 운영 기준은 `../newacts-newcomer-automation/`이며, 변경 요청은 그 프로젝트로 라우팅한다.
