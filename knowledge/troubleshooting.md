@@ -1,7 +1,7 @@
 # Troubleshooting
 
 ## Business invariants
-<!-- akela: id=business-invariants scope=develop,test,operate tier=must -->
+<!-- akela: id=business-invariants scope=develop,test,operate tier=should -->
 교육과정 허용·제외 목록, 동일인 판정, 중복 방지, 디모데 저장 성공 후 Sheet 체크 순서를 근거 없이 변경하지 않는다.
 
 ## UI selector changes

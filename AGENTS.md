@@ -50,3 +50,9 @@ Google Sheet의 교육 수료 명단을 읽고 Playwright로 디모데 교인을
 ## 상세 정보
 
 설치, OAuth, 실행 옵션, 결과 상태, 문제 해결은 `README.md`에 있다. Apps Script 코드 위치는 `../docs/APPS_SCRIPT.md`를 필요할 때만 읽는다.
+
+## 읽기 범위
+
+요청 대상 함수와 README의 필요한 절만 확인한다.
+
+이 절은 이전에 `CLAUDE.md`에만 있어 Codex가 볼 수 없던 규칙이다. AI 지침의 원본은 이 파일 하나다. 같은 디렉터리의 `CLAUDE.md`는 이 파일을 `@` import 하는 두 줄짜리 파일이며 `scripts/sync-agent-docs.sh`가 관리한다. Claude 전용 지침도 여기에 적는다.
