@@ -19,7 +19,17 @@ Semantic Versioning은 강제하지 않는다. 프로젝트에 Versioning 정책
 
 ### Added
 
+- NFR-SEC-001 / NFR-DATA-001: 저장소 위생 자동 검사(TEST-HYGIENE-001,
+  `tests/test_repository_hygiene.py`). `.gitignore` 선언과 git의 실제 무시 동작을 따로
+  확인하고, 추적 파일에 민감 산출물이 없는지, `config.example.py`에 실제 값이 없는지,
+  시트 쓰기가 E·G 두 열로 제한되는지 본다. 이 프로젝트의 첫 자동 테스트다 — 두
+  요구사항의 '측정'은 사람 눈이 필요 없고, 실수로 커밋한 개인정보는 되돌리기 어렵다.
+
 ### Changed
+
+- REQ-MATCH-001/002: 동일인 판정 기준을 코드에 맞춰 문서 정리 — `팀`은 비교하지 않고
+  `이름 + 군 + 청년 A/B`만 본다(README 문제 해결 절, SPEC 13절).
+- SPEC.md: Project Version 1.0.0, Owner 역할명 지정.
 
 ### Fixed
 

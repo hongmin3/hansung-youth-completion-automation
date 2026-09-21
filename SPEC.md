@@ -5,10 +5,10 @@
 | 항목 | 값 |
 |---|---|
 | Document Version | 1.0.0 |
-| Project Version | 없음 (Versioning 정책 미정) |
+| Project Version | 1.0.0 |
 | Last Updated | 2026-09-19 |
 | Status | active |
-| Owner | (TBD) |
+| Owner | 디모데 입력 운영 담당자 (역할명) |
 
 이 문서는 `dimode-completion-input`가 **어떻게 동작해야 하는가**를 정의하는 기준이다.
 코드가 현재 그렇게 동작한다는 사실은 사양이 아니다. 사양과 구현이 다르면 코드에 맞춰 이
@@ -567,6 +567,27 @@ TEST-EXEC-001로 입력된 사람이 있고, 그 행의 `입력여부` 체크를
 #### Expected Result
 상태가 `이미입력됨`이고 교육과정이 중복 등록되지 않는다. 시트는 다시 체크된다.
 
+### TEST-HYGIENE-001
+
+#### 검증 대상
+NFR-SEC-001, NFR-DATA-001
+
+#### 선행 조건
+없음. 자격 증명도 network도 쓰지 않는다 — git 추적 목록과 소스만 읽으므로 언제든 돌릴 수
+있다. 이 프로젝트의 다른 TEST는 전부 수동 절차지만 이 둘의 '측정'은 기계가 답할 수 있다.
+
+#### 절차
+`.venv/bin/python -m unittest discover -s tests`를 실행한다
+(`tests/test_repository_hygiene.py`).
+
+#### Expected Result
+`.gitignore`가 `config.py`, `credentials.json`, `token.json`, `output/`, `user_data/`,
+`result_log.txt`, `debug_*.html`, `debug_*.png`를 모두 덮고, git이 그 경로들을 **실제로**
+무시한다(선언과 동작을 따로 확인한다 — 뒤의 negation 규칙이 앞을 덮을 수 있다).
+추적 중인 파일에 민감 산출물이 0건이고, `config.example.py`에 실제 스프레드시트 ID나
+이메일 주소가 없다. `update_sheet_result`가 만드는 시트 range의 열이 정확히 `E`와 `G`이며,
+시트에 쓰는 함수가 그 하나뿐이다(다른 쓰기 경로가 생기면 열 검사가 범위를 놓친다).
+
 ## 12. 요구사항 추적성
 
 | Requirement | Implementation | Test | Status |
@@ -581,8 +602,8 @@ TEST-EXEC-001로 입력된 사람이 있고, 그 행의 `입력여부` 체크를
 | REQ-INPUT-002 | `completion_automation.py` (`process`) | TEST-EXEC-001 (수동) | verified |
 | REQ-SHEET-002 | `completion_automation.py` (`update_sheet_result`) | TEST-EXEC-001 (수동) | verified |
 | REQ-REPORT-001 | `completion_automation.py` (`save_plan`, `log`) | TEST-DRYRUN-001 (수동) | verified |
-| NFR-SEC-001 | `.gitignore`, `config.example.py` | (없음) | implemented |
-| NFR-DATA-001 | `.gitignore`, `completion_automation.py` (`update_sheet_result`) | (없음) | implemented |
+| NFR-SEC-001 | `.gitignore`, `config.example.py` | TEST-HYGIENE-001 | verified |
+| NFR-DATA-001 | `.gitignore`, `completion_automation.py` (`update_sheet_result`) | TEST-HYGIENE-001 | verified |
 | NFR-OPS-001 | `completion_automation.py` (`main`, `search_person_cards`) | TEST-DRYRUN-001 (수동) | implemented |
 
 Status 값: `draft` (사양만 있음) / `implemented` / `verified` (실제 실행까지 확인) /
@@ -599,10 +620,9 @@ Status 값: `draft` (사양만 있음) / `implemented` / `verified` (실제 실�
   받아야 하는지 정해지지 않았다.
 - **제외 교육과정의 최종 처리.** `기초반`, `예배학교`, `결혼예비학교`는 "추후 확정 후
   사용자 요청 시"로만 적혀 있다. 디모데의 정확한 과정 명칭도, 입력할지 여부도 미확정이다.
-- **`팀` 값의 판정 역할.** `README.md`의 문제 해결 절은 `이름·군·팀`으로 확정한다고
-  쓰여 있으나 실제 확정 경로는 `이름 + 군 + 청년 A/B`만 본다. 팀을 비교하는 함수
-  (`identity_matches`)는 정의되어 있지만 호출되지 않는다. 팀 일치를 요구해야 하는지,
-  아니면 문서를 고쳐야 하는지 확인이 필요하다.
+- **호출되지 않는 팀 비교 함수.** 확정 경로는 `이름 + 군 + 청년 A/B`이고 `팀`은 판정에 쓰지
+  않는다(2026-09-19 확정, 문서를 코드에 맞춤). `identity_matches`, `normalize_team`은
+  정의만 되어 있고 호출되지 않는다 — 지울지, 시트 소속 확인용으로 쓸지는 정해지지 않았다.
 - **`--defer-sheet-checks`의 후속 절차.** 미룬 체크를 누가 어떤 방법으로 맞추는지 정해진
   절차가 없다. 또한 이 옵션을 켜도 OAuth 파일이 존재하면 체크가 그대로 수행되는데, 이것이
   의도인지(자격 증명이 있으면 체크한다) 아니면 항상 보류해야 하는지 확정되지 않았다.
