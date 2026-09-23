@@ -11,3 +11,4 @@
 - 2026-09-23: SPEC 가시화 — 요구사항 이름 13개·기능 그룹 표 추가, `docs/SPEC.html`(렌더러 v2) 생성, 공통 workflow v3 적용. 준비 검사와 자체 테스트 통과.
 - 2026-09-23: `agent/apps-script-hardening` → `main` merge(충돌 5개 해소, main 지식·Root 탐색 스크립트 보존), 태그 없는 지식 14개 절에 activity 범위 부여, SPEC HTML 렌더러 v3. 준비 검사·knowledge scope·자체 테스트 통과.
 - 2026-09-23: 준비 검사에 CHANGELOG 형식 예시 블록 검사(`CHANGELOG_EXAMPLE_MODIFIED`) 반영. 준비 검사와 자체 테스트 통과.
+- 2026-09-24: 공통 SPEC workflow v4·SPEC HTML 렌더러 v4(목차에 지금 읽는 곳 표시) 반영. 준비 검사와 자체 테스트 통과.
