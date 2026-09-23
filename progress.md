@@ -8,3 +8,4 @@
 - 변경 파일: `AGENTS.md`, `CLAUDE.md`, `progress.md`, `SPEC.md`, `CHANGELOG.md`, `README.md`
 - 알려진 문제: 없음
 - 다음 세션 시작점: `main.py` 또는 `completion_automation.py`의 대상 함수 확인
+- 2026-09-23: SPEC 가시화 — 요구사항 이름 13개·기능 그룹 표 추가, `docs/SPEC.html`(렌더러 v2) 생성, 공통 workflow v3 적용. 준비 검사와 자체 테스트 통과.
