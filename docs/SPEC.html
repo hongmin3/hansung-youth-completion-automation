@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="automation-workspace render-spec-html v3">
+<meta name="spec-html-renderer" content="v3">
+<meta name="spec-source-sha256" content="01ca8158d07a1f808e9fcecaa9c85a1acac0e21be734c6f19dc87534e9ccf607">
+<title>청년 양육 수료내역 디모데 자동입력 사양서</title>
+<style>:root{--bg:#f7f8fa;--panel:#fff;--text:#1d2330;--muted:#5d6678;--line:#e2e6ee;--accent:#2f6fde;--code:#f1f3f7;
+--req:#2f6fde;--nfr:#8a4fd8;--test:#15907a;--draft:#8a93a6;--implemented:#c98a12;--verified:#1f9d55;--deprecated:#c2413a;--active:#2f6fde;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#12151c;--panel:#1a1f29;--text:#e4e8f0;--muted:#9aa4b7;--line:#2c3444;--accent:#6ea0ff;--code:#232a37;
+--req:#6ea0ff;--nfr:#b58cff;--test:#3cc4a6;--draft:#8f99ad;--implemented:#e3a93a;--verified:#45c47c;--deprecated:#ef6b62;--active:#6ea0ff;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.7 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Segoe UI",sans-serif;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+code{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);border-radius:4px;padding:.1em .35em}
+pre{background:var(--code);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow:auto}pre code{background:none;padding:0}
+.top{background:var(--panel);border-bottom:1px solid var(--line);padding:24px 32px}
+.top h1{margin:0 0 12px;font-size:26px;line-height:1.3}
+.chips,.stats{display:flex;flex-wrap:wrap;gap:8px}.chips{margin-bottom:14px}
+.chip{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:13px}
+.chip>span{color:var(--muted)}
+.stat{border:1px solid var(--line);border-radius:10px;padding:8px 14px;min-width:96px;background:var(--bg)}
+.stat b{display:block;font-size:22px;line-height:1.2}.stat span{font-size:12px;color:var(--muted)}
+.stat.st-draft b{color:var(--draft)}.stat.st-implemented b{color:var(--implemented)}.stat.st-verified b{color:var(--verified)}.stat.st-deprecated b{color:var(--deprecated)}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:28px;max-width:1280px;margin:0 auto;padding:24px 32px}
+.toc{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px);overflow:auto;font-size:13px}
+.toc input{width:100%;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);margin-bottom:10px;font:inherit}
+.toc ul{list-style:none;margin:0;padding:0}.toc li{margin:1px 0}.toc a{display:block;padding:2px 8px;border-radius:6px;color:var(--text)}
+.toc a:hover{background:var(--code);text-decoration:none}
+.toc .toc-2{margin-top:8px;font-weight:600}.toc .toc-id a{padding-left:20px;font:12px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--muted)}
+main{min-width:0}
+.chapter{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 24px 16px;margin-bottom:20px}
+.chapter>h2{font-size:20px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.card{border:1px solid var(--line);border-left:4px solid var(--req);border-radius:8px;padding:2px 16px 8px;margin:14px 0;background:var(--bg)}
+.card.kind-nfr{border-left-color:var(--nfr)}.card.kind-test{border-left-color:var(--test)}
+.card h3,.card h4{margin:12px 0 4px}.card h4{font-size:14px;color:var(--muted)}
+.idtag{font:600 13px/1.4 ui-monospace,Menlo,Consolas,monospace;background:var(--req);color:#fff;border-radius:6px;padding:2px 8px}
+.kind-nfr .idtag{background:var(--nfr)}.kind-test .idtag{background:var(--test)}
+.idref{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92em;white-space:nowrap}
+.idtag,.badge{white-space:nowrap}
+.card-meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;margin:2px 0 6px}
+.meta b{color:var(--muted);font-weight:600;margin-right:4px}
+details.history{font-size:13px;margin:4px 0 8px}details.history summary{cursor:pointer;color:var(--muted)}
+details.history ul{margin:6px 0;padding-left:18px}.hist{color:var(--muted);font-size:12px}
+tr.group th{background:var(--bg);text-align:left;font-size:14px;padding-top:12px}.gcode{font:600 12px/1.4 ui-monospace,Menlo,Consolas,monospace;border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin-right:4px}
+table.index td:first-child{white-space:nowrap}table.index td:nth-child(2){min-width:10em}table.index td:nth-child(4){min-width:13em}.untitled{color:var(--muted);font-style:italic}
+.toc .toc-id span{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--text)}
+figure.flow{margin:12px 0;overflow-x:auto}figure.flow svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.flow .node rect{fill:var(--panel);stroke:var(--accent);stroke-width:1.5}
+.flow text{font-size:13px;fill:var(--text);text-anchor:middle;dominant-baseline:central}
+.flow .edge{fill:none;stroke:var(--muted);stroke-width:1.5}.flow .edge.back{stroke-dasharray:5 4}.flow marker path{fill:var(--muted)}
+.flow .elabel{font-size:12px;fill:var(--muted);paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
+.nohist{color:var(--muted)}
+main img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.table-wrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--code);font-weight:600}
+.badge{display:inline-block;border-radius:999px;padding:0 10px;font-size:12px;font-weight:600;color:#fff;background:var(--draft)}
+.st-implemented.badge{background:var(--implemented)}.st-verified.badge{background:var(--verified)}.st-deprecated.badge{background:var(--deprecated)}.st-active.badge{background:var(--active)}
+blockquote{margin:10px 0;padding:4px 16px;border-left:4px solid var(--line);color:var(--muted)}
+li.task{list-style:none;margin-left:-1.2em}
+hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+footer{max-width:1280px;margin:0 auto;padding:8px 32px 40px;color:var(--muted);font-size:13px}
+.hidden{display:none}
+@media (max-width:860px){.layout{grid-template-columns:1fr;padding:16px}.toc{position:static;max-height:260px}.top{padding:18px 16px}.chapter{padding:2px 14px 12px}footer{padding:8px 16px 32px}}
+@media print{.toc,footer{display:none}.layout{display:block;padding:0}.chapter{break-inside:auto;border:0}.card{break-inside:avoid}body{background:#fff}}</style>
+</head>
+<body>
+<header class="top">
+<h1>청년 양육 수료내역 디모데 자동입력 사양서</h1>
+<div class="chips"><span class="chip"><span>Document Version</span><b>1.0.0</b></span><span class="chip"><span>Project Version</span><b>1.0.0</b></span><span class="chip"><span>Last Updated</span><b>2026-09-19</b></span><span class="chip"><span>Status</span><b><span class="badge st-active">active</span></b></span><span class="chip"><span>Owner</span><b>디모데 입력 운영 담당자 (역할명)</b></span></div>
+<div class="stats"><div class="stat"><b>10</b><span>기능 요구사항 REQ</span></div><div class="stat"><b>3</b><span>비기능 NFR</span></div><div class="stat"><b>5</b><span>테스트 TEST</span></div><div class="stat st-implemented"><b>2</b><span>implemented</span></div><div class="stat st-verified"><b>11</b><span>verified</span></div></div>
+</header>
+<div class="layout">
+<nav class="toc" aria-label="목차">
+<input type="search" id="toc-filter" placeholder="목차·ID 검색" aria-label="목차 검색">
+<ul><li class="toc-2"><a href="#feature-index">기능 목록</a></li>
+<li class="toc-2"><a href="#sec-1">1. 목적</a></li>
+<li class="toc-2"><a href="#sec-2">2. 프로젝트 범위</a></li>
+<li class="toc-2"><a href="#sec-3">3. 시스템 구성</a></li>
+<li class="toc-2"><a href="#sec-4">4. 전체 동작 흐름</a></li>
+<li class="toc-2"><a href="#sec-5">5. 기능 요구사항</a></li>
+<li class="toc-id kind-req"><a href="#REQ-SHEET-001">REQ-SHEET-001 <span>수료자 명단 읽기</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-CLI-001">REQ-CLI-001 <span>읽기 전용 기본 실행</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-FILTER-001">REQ-FILTER-001 <span>처리 대상 선별</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-MATCH-001">REQ-MATCH-001 <span>전화번호로 교인 확정</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-MATCH-002">REQ-MATCH-002 <span>이름·소속으로 교인 확정</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-PHONE-001">REQ-PHONE-001 <span>빈 전화번호 보완</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-INPUT-001">REQ-INPUT-001 <span>수료내역 중복 등록 방지</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-INPUT-002">REQ-INPUT-002 <span>수료내역 등록</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-SHEET-002">REQ-SHEET-002 <span>입력여부 체크 동기화</span></a></li>
+<li class="toc-id kind-req"><a href="#REQ-REPORT-001">REQ-REPORT-001 <span>미입력 사유 보고</span></a></li>
+<li class="toc-2"><a href="#sec-6">6. 비기능 요구사항</a></li>
+<li class="toc-id kind-nfr"><a href="#NFR-SEC-001">NFR-SEC-001 <span>인증 정보 저장소 밖 보관</span></a></li>
+<li class="toc-id kind-nfr"><a href="#NFR-DATA-001">NFR-DATA-001 <span>개인정보 로컬 취급</span></a></li>
+<li class="toc-id kind-nfr"><a href="#NFR-OPS-001">NFR-OPS-001 <span>사람이 지켜보는 수동 실행</span></a></li>
+<li class="toc-2"><a href="#sec-7">7. 데이터 사양</a></li>
+<li class="toc-2"><a href="#sec-8">8. Configuration 사양</a></li>
+<li class="toc-2"><a href="#sec-9">9. 오류 처리 정책</a></li>
+<li class="toc-2"><a href="#sec-10">10. 보안 요구사항</a></li>
+<li class="toc-2"><a href="#sec-11">11. 테스트 사양</a></li>
+<li class="toc-id kind-test"><a href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></li>
+<li class="toc-id kind-test"><a href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></li>
+<li class="toc-id kind-test"><a href="#TEST-EXEC-001">TEST-EXEC-001</a></li>
+<li class="toc-id kind-test"><a href="#TEST-DUP-001">TEST-DUP-001</a></li>
+<li class="toc-id kind-test"><a href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></li>
+<li class="toc-2"><a href="#sec-12">12. 요구사항 추적성</a></li>
+<li class="toc-2"><a href="#sec-13">13. 미확정 사항</a></li>
+<li class="toc-2"><a href="#sec-14">14. 향후 개선 후보</a></li></ul>
+</nav>
+<main>
+<section class="chapter" id="feature-index">
+<h2>기능 목록</h2>
+<div class="table-wrap"><table class="index">
+<thead><tr><th>ID</th><th>이름</th><th>상태</th><th>구현</th><th>테스트</th></tr></thead>
+<tbody>
+<tr class="group"><th colspan="5"><span class="gcode">SHEET</span> 시트 연동</th></tr>
+<tr><td><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a></td><td>수료자 명단 읽기</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>load_sheet_rows</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td><a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a></td><td>입력여부 체크 동기화</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">CLI</span> 실행 옵션</th></tr>
+<tr><td><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></td><td>읽기 전용 기본 실행</td><td><span class="badge st-verified">verified</span></td><td><code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">FILTER</span> 대상 선별</th></tr>
+<tr><td><a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a></td><td>처리 대상 선별</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">MATCH</span> 교인 매칭</th></tr>
+<tr><td><a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a></td><td>전화번호로 교인 확정</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>find_exact_person_card</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td><a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a></td><td>이름·소속으로 교인 확정</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">PHONE</span> 전화번호 보완</th></tr>
+<tr><td><a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a></td><td>빈 전화번호 보완</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>enrich_phone</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">INPUT</span> 수료내역 입력</th></tr>
+<tr><td><a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a></td><td>수료내역 중복 등록 방지</td><td><span class="badge st-implemented">implemented</span></td><td><code>completion_automation.py</code> (<code>process</code>)</td><td><a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a> (수동)</td></tr>
+<tr><td><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a></td><td>수료내역 등록</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>process</code>)</td><td><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">REPORT</span> 결과 보고</th></tr>
+<tr><td><a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></td><td>미입력 사유 보고</td><td><span class="badge st-verified">verified</span></td><td><code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">NFR SEC</span> 보안</th></tr>
+<tr><td><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a></td><td>인증 정보 저장소 밖 보관</td><td><span class="badge st-verified">verified</span></td><td><code>.gitignore</code>, <code>config.example.py</code></td><td><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">NFR DATA</span> 개인정보</th></tr>
+<tr><td><a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></td><td>개인정보 로컬 취급</td><td><span class="badge st-verified">verified</span></td><td><code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td></tr>
+<tr class="group"><th colspan="5"><span class="gcode">NFR OPS</span> 운영</th></tr>
+<tr><td><a class="idref" href="#NFR-OPS-001">NFR-OPS-001</a></td><td>사람이 지켜보는 수동 실행</td><td><span class="badge st-implemented">implemented</span></td><td><code>completion_automation.py</code> (<code>main</code>, <code>search_person_cards</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+</tbody>
+</table></div>
+</section>
+<p>이 문서는 <code>dimode-completion-input</code>가 <strong>어떻게 동작해야 하는가</strong>를 정의하는 기준이다.
+코드가 현재 그렇게 동작한다는 사실은 사양이 아니다. 사양과 구현이 다르면 코드에 맞춰 이
+문서를 고치지 말고 <code>SPEC / CODE MISMATCH</code>로 식별한다 — 절차는 <code>AGENTS.md</code>에 있다.</p>
+<p>프로젝트 규모에 따라 아래 Section은 줄일 수 있다. 다만 <strong>1 목적 · 2 범위 · 5 기능 요구사항 ·
+9 오류 처리 · 11 테스트 사양 · 12 추적성</strong>은 유지보수형 자동화라면 반드시 채운다.</p>
+<section class="chapter" id="sec-1">
+<h2>1. 목적</h2>
+<p>청년부 교육 담당자가 Google Sheet에 모아 둔 양육 수료자 명단을, 사람이 디모데 웹 화면에서
+한 명씩 검색·입력하는 대신 자동으로 등록한다. 수백 행 규모의 반복 입력에서 사람이 저지르는
+동명이인 오입력과 중복 입력을 없애는 것이 목적이다.</p>
+<p>성공 조건: 명단의 각 행이 <strong>확정된 동일인에게만</strong> 수료내역으로 등록되고, 등록에 성공했거나
+이미 같은 과정이 등록되어 있던 행만 Sheet의 <code>입력여부</code>가 체크된다. 확정하지 못한 행은
+입력하지도 체크하지도 않고 사유가 남는다.</p>
+</section>
+<section class="chapter" id="sec-2">
+<h2>2. 프로젝트 범위</h2>
+<h3>포함</h3>
+<ul>
+<li>Google Sheet(또는 동일한 열 구조의 CSV)에서 수료자 명단을 읽는 것.</li>
+<li>디모데 <code>청년관리 &gt; 교인검색(청년)</code> 화면에서 명단의 사람을 찾아 동일인으로 확정하는 것.</li>
+<li>허용된 <code>청년-</code> 교육과정에 한해 수료내역을 등록하는 것.</li>
+<li>같은 과정이 이미 등록되어 있는지 확인해 중복 등록을 막는 것.</li>
+<li>성공한 행에 한해 Sheet의 <code>입력여부</code> 체크박스와 보완된 전화번호를 갱신하는 것.</li>
+<li>행 단위 처리 결과를 CSV와 로그로 남기는 것.</li>
+<li>실제 입력 없이 대상과 판정 결과만 확인하는 드라이런.</li>
+</ul>
+<h3>제외</h3>
+<ul>
+<li>명단 자체의 수집·정제. 시트 내용의 오탈자 교정은 사람이 한다.</li>
+<li>디모데에 존재하지 않는 교인의 신규 등록. 교인 생성은 하지 않는다.</li>
+<li><code>기초반</code>, <code>예배학교</code>, <code>결혼예비학교</code>의 입력. 현재 명시적 제외 대상이다.</li>
+<li>수료 외 상태(미수료, 수강중 등)의 등록.</li>
+<li>교육과정 삭제·수정. 이 자동화는 신규 등록만 한다.</li>
+<li>스케줄 실행·무인 실행. 사람이 지켜보는 상태에서 수동 실행한다.</li>
+<li>Apps Script 영역. 그 기준은 <code>../newacts-newcomer-automation/</code>에 있다.</li>
+</ul>
+</section>
+<section class="chapter" id="sec-3">
+<h2>3. 시스템 구성</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>구성 요소</th><th>책임</th></tr></thead>
+<tbody>
+<tr><td><code>main.py</code></td><td>CLI 진입점. <code>completion_automation.main()</code>을 호출한다.</td></tr>
+<tr><td><code>completion_automation.py</code></td><td>옵션 파싱, 시트 읽기, 디모데 로그인·검색·동일인 판정·중복 확인·저장, 시트 갱신, 결과 기록 전체.</td></tr>
+<tr><td><code>config.example.py</code></td><td>공개 가능한 설정 항목의 예시. 복사해서 <code>config.py</code>로 쓴다.</td></tr>
+<tr><td><code>config.py</code></td><td>이 머신 전용 비밀 설정. 저장소에 포함하지 않는다.</td></tr>
+<tr><td><code>requirements.txt</code></td><td>Python 의존성 목록.</td></tr>
+<tr><td><code>knowledge/</code></td><td>에이전트 작업용 판단 규칙. 사양을 복제하지 않고 참조만 한다.</td></tr>
+<tr><td><code>output/</code></td><td>실행 산출물(드라이런 계획 CSV, 실제 실행 결과 CSV) 저장 위치.</td></tr>
+</tbody>
+</table></div>
+<p>외부 시스템 경계는 셋이다.</p>
+<ol>
+<li><strong>Google Sheets</strong> — 명단의 원본이자 <code>입력여부</code>의 기록처. Sheets API(OAuth) 또는
+CSV export로 읽고, 쓰기는 Sheets API로만 한다.</li>
+<li><strong>디모데 웹(청년 관리)</strong> — Playwright Chromium으로 조작하는 ASP.NET 프레임 기반 화면.
+공개 API가 없으므로 DOM selector에 의존한다.</li>
+<li><strong>로컬 파일 시스템</strong> — 설정, OAuth 자격 증명, 결과 CSV, 실행 로그.</li>
+</ol>
+</section>
+<section class="chapter" id="sec-4">
+<h2>4. 전체 동작 흐름</h2>
+<ol>
+<li>CLI 옵션을 해석해 실행 모드(드라이런/실제 입력)와 대상 범위를 정한다.</li>
+<li>Google Sheets 자격 증명을 준비한다. 실제 입력 모드에서는 필수다(단, 체크 보류 옵션 제외).</li>
+<li>명단을 읽는다. 각 행에 원본 시트의 행 번호를 붙인다.</li>
+<li>Playwright로 Chromium을 띄우고 디모데에 로그인해 교인검색(청년) 목록으로 이동한다.</li>
+<li>행마다:
+<ol>
+<li><code>입력여부</code>가 이미 체크되어 있으면 건너뛴다.</li>
+<li><code>구분</code>을 허용 교육과정으로 매핑한다. 매핑이 없거나 제외 대상이면 <code>교육과정매핑없음</code>.</li>
+<li>전화번호가 비어 있고 보완 조회가 켜져 있으면 이름·군·A/B로 전화번호를 보완한다.</li>
+<li>전화번호가 있으면 전화번호로 검색해 <code>이름+전화번호</code>가 유일하게 맞는 사람을 찾는다.</li>
+<li>찾지 못했으면 이름으로 검색해 <code>이름+군</code>이 같고 교인 구분이 청년 A/B인 사람이
+정확히 한 명일 때만 확정한다.</li>
+<li>확정하지 못했거나 복수면 입력하지 않고 사유 상태를 남긴다.</li>
+<li>드라이런이면 <code>드라이런확인</code>으로 끝낸다.</li>
+<li>실제 입력이면 교인 상세 창을 열어 같은 과정이 있는지 보고, 없을 때만 저장한다.</li>
+<li>저장 성공 또는 기존 등록 확인 뒤에만 Sheet의 <code>입력여부</code>를 체크한다.</li>
+</ol>
+</li>
+<li>브라우저를 닫고 행 단위 결과를 <code>output/</code> 아래 CSV로 저장한다.</li>
+</ol>
+</section>
+<section class="chapter" id="sec-5">
+<h2>5. 기능 요구사항</h2>
+<p>ID 규칙: <code>REQ-&lt;CATEGORY&gt;-NNN</code>. CATEGORY는 대문자·숫자, NNN은 세 자리.
+한 번 부여한 ID는 재사용하거나 의미를 바꾸지 않는다. 삭제한 ID를 다른 기능에 돌려쓰지 않는다.</p>
+<p>기능 그룹 — CATEGORY마다 사람이 읽는 이름이다. <code>docs/SPEC.html</code>의 기능 목록이 이 이름으로 묶인다.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>카테고리</th><th>이름</th></tr></thead>
+<tbody>
+<tr><td>SHEET</td><td>시트 연동</td></tr>
+<tr><td>CLI</td><td>실행 옵션</td></tr>
+<tr><td>FILTER</td><td>대상 선별</td></tr>
+<tr><td>MATCH</td><td>교인 매칭</td></tr>
+<tr><td>PHONE</td><td>전화번호 보완</td></tr>
+<tr><td>INPUT</td><td>수료내역 입력</td></tr>
+<tr><td>REPORT</td><td>결과 보고</td></tr>
+<tr><td>SEC</td><td>보안</td></tr>
+<tr><td>DATA</td><td>개인정보</td></tr>
+<tr><td>OPS</td><td>운영</td></tr>
+</tbody>
+</table></div>
+<section class="card kind-req" id="REQ-SHEET-001">
+<h3><span class="idtag">REQ-SHEET-001</span> 수료자 명단 읽기</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>load_sheet_rows</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>수료자 명단을 고정된 열 구조로 읽고, 각 행을 원본 시트의 행 번호와 묶어 둔다.</p>
+<h4>동작</h4>
+<ul>
+<li>입력 원본은 세 가지 중 하나다: (a) Sheets API로 읽은 대상 탭의 A:G 범위,
+(b) <code>--sheet-csv</code>로 지정한 CSV 파일, (c) OAuth 자격 증명이 없을 때 쿠키로 내려받은
+CSV export.</li>
+<li>열 순서는 <code>구분 / 군 / 팀 / 이름 / 핸드폰 / 담당자 / 입력여부</code>여야 한다.</li>
+<li>첫 행은 header로 보고, 데이터 행에는 시트 기준 행 번호(2부터)를 부여한다. 이 번호가
+뒤의 시트 갱신과 결과 CSV의 <code>시트행</code> 값의 기준이다.</li>
+<li>API 응답에서 뒤쪽 빈 칸이 생략되어 열 수가 모자란 행은 빈 문자열로 채워 header와 길이를
+맞춘다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>명단의 모든 데이터 행이, 원본 행 번호를 잃지 않은 채 처리 대상 목록으로 올라온다.</p>
+<h4>예외 처리</h4>
+<ul>
+<li><code>SHEET_URL</code>에서 스프레드시트 ID를 뽑을 수 없으면 실행을 중단한다.</li>
+<li>쿠키 방식에서 <code>401</code>이 오면 쿠키 만료임을 알리고 OAuth 설정을 안내하며 중단한다.</li>
+<li><code>--sheet-csv</code>는 원본 시트의 전체 행 순서를 보존한 CSV에만 쓴다. 필터링된 CSV를 주면
+<code>시트행</code> 번호가 어긋나므로 사용자가 보장해야 한다.</li>
+</ul>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>load_sheet_rows</code>, <code>rows_from_csv</code>, <code>spreadsheet_id_from_url</code>,
+<code>gid_from_url</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-CLI-001">
+<h3><span class="idtag">REQ-CLI-001</span> 읽기 전용 기본 실행</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a>, <a class="idref" href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>기본값을 안전한 쪽(읽기 전용)에 두고, 실제 데이터 변경은 명시적 옵션으로만 일어나게 한다.</p>
+<h4>동작</h4>
+<ul>
+<li>옵션 없이 실행하면 <strong>드라이런</strong>이다. 디모데와 Sheet를 변경하지 않는다.</li>
+<li><code>--execute</code>를 줄 때만 디모데 저장과 Sheet 체크를 수행한다.</li>
+<li><code>--limit N</code>은 실제로 처리한 행이 N개가 되면 멈춘다. 건너뛴 행(체크 완료 행)은 세지 않는다.</li>
+<li><code>--skip-phone-lookup</code>은 전화번호 보완 조회를 생략한다(<a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>).</li>
+<li><code>--sheet-csv PATH</code>는 Sheet 대신 CSV를 입력으로 쓴다.</li>
+<li><code>--defer-sheet-checks</code>는 Sheets 자격 증명 없이 <code>--execute</code>를 허용하고, 체크 갱신을
+외부 작업으로 미룬다. 일반 실행에서는 쓰지 않는다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>실행 시작 시 모드와 대상 행 수가 로그에 남는다. 옵션을 잘못 조합해도 드라이런이 실제
+입력으로 바뀌지 않는다.</p>
+<h4>예외 처리</h4>
+<ul>
+<li>Playwright가 설치되어 있지 않으면 설치 명령을 안내하고 종료한다.</li>
+<li><code>--execute</code>이면서 <code>--defer-sheet-checks</code>가 아닌데 OAuth 클라이언트 파일이 없으면
+입력을 시작하지 않고 중단한다.</li>
+</ul>
+<h4>관련 구현</h4>
+<p><code>main.py</code>, <code>completion_automation.py</code> — <code>parse_args</code>, <code>Options</code>, <code>main</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-FILTER-001">
+<h3><span class="idtag">REQ-FILTER-001</span> 처리 대상 선별</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>이미 처리된 행과 입력해서는 안 되는 교육과정을 처리 대상에서 제외한다.</p>
+<h4>동작</h4>
+<ul>
+<li><p><code>입력여부</code>가 체크로 해석되는 값이면 그 행은 검색조차 하지 않고 건너뛴다. 체크로 보는
+값은 <code>TRUE</code>, <code>Y</code>, <code>YES</code>, <code>완료</code>, <code>입력완료</code>, 체크 기호이며 대소문자를 구분하지 않는다.</p></li>
+<li><p><code>구분</code> 값을 교육과정 매핑으로 변환한다. 기본 허용은 다음 다섯 개다.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>시트 <code>구분</code></th><th>디모데 과정</th></tr></thead>
+<tbody>
+<tr><td>LTC</td><td>청년-LTC</td></tr>
+<tr><td>확신반</td><td>청년-확신반</td></tr>
+<tr><td>성장반</td><td>청년-성장반</td></tr>
+<tr><td>성경대학</td><td>청년-성경대학</td></tr>
+<tr><td>교리대학</td><td>청년-교리대학</td></tr>
+</tbody>
+</table></div>
+</li>
+<li><p>설정으로 매핑을 추가할 수 있으나, 제외 목록(<code>기초반</code>, <code>예배학교</code>, <code>결혼예비학교</code>)은
+설정으로 추가하더라도 코드가 다시 제거한다. 설정으로 제외를 뚫을 수 없어야 한다.</p></li>
+<li><p>매핑 결과가 없거나 <code>청년-</code>으로 시작하지 않으면 <code>교육과정매핑없음</code>으로 남기고 입력하지 않는다.</p></li>
+</ul>
+<h4>기대 결과</h4>
+<p>재실행해도 이미 체크된 행은 다시 처리되지 않는다. 제외 과정은 어떤 경로로도 디모데에
+입력되지 않는다.</p>
+<h4>예외 처리</h4>
+<p>허용 목록에 없는 <code>구분</code>은 오류가 아니라 정상적인 미처리 상태로 기록한다. 실행을 멈추지 않는다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>is_checked</code>, <code>course_map</code>, <code>process</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-MATCH-001">
+<h3><span class="idtag">REQ-MATCH-001</span> 전화번호로 교인 확정</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>find_exact_person_card</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span></div>
+<details class="history"><summary>변경 이력 1</summary>
+<ul>
+<li><span class="hist">[Unreleased] · Changed</span> <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>/002: 동일인 판정 기준을 코드에 맞춰 문서 정리 — <code>팀</code>은 비교하지 않고
+<code>이름 + 군 + 청년 A/B</code>만 본다(README 문제 해결 절, SPEC 13절).</li>
+</ul>
+</details>
+<h4>목적</h4>
+<p>전화번호가 있는 행은 전화번호를 1순위 식별자로 삼아 동일인을 확정한다.</p>
+<h4>동작</h4>
+<ul>
+<li>시트의 <code>핸드폰</code>(또는 <code>전화번호</code>, <code>연락처</code>) 값을 숫자만 남겨 10자리/11자리일 때
+<code>000-0000-0000</code> 형태로 정규화한다. 그 외 길이는 번호 없음으로 본다.</li>
+<li>정규화된 번호로 디모데를 검색하고, 결과 카드 중 <code>이름</code>과 <code>전화번호</code>가 모두 일치하는
+것을 고른다.</li>
+<li>정확히 하나면 그 사람으로 확정한다. <strong>군·팀이 달라도 동일인으로 판단한다</strong> — 시트의
+소속이 낡았을 수 있고 이름+번호 조합이 더 강한 식별자이기 때문이다.</li>
+<li>둘 이상이면 확정하지 않고 <code>교인복수일치</code>로 중단한다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>번호가 있는 행은 소속 변경과 무관하게 동일인에 도달하거나, 안전하게 미처리로 남는다.</p>
+<h4>예외 처리</h4>
+<p>번호로 확정하지 못하면(0건) 실패로 끝내지 않고 <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a>의 이름 기반 경로로 넘어간다.
+복수 일치는 이름 경로로 넘어가지 않고 그 자리에서 중단한다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>format_phone</code>, <code>search_person_cards</code>, <code>parse_person_card</code>,
+<code>find_exact_person_card</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-MATCH-002">
+<h3><span class="idtag">REQ-MATCH-002</span> 이름·소속으로 교인 확정</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>, <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>전화번호로 확정하지 못한 사람을 이름과 소속으로 확정하되, 조금이라도 모호하면 입력하지 않는다.</p>
+<h4>동작</h4>
+<ul>
+<li>이름으로 검색하고, 결과 카드 중 다음을 <strong>모두</strong> 만족하는 것만 후보로 본다.
+<ul>
+<li>이름이 시트의 <code>이름</code>과 같다.</li>
+<li><code>군</code>이 시트의 <code>군</code>과 같다. 비교 전에 괄호와 그 안의 세부 명칭을 제거해 정규화한다
+(예: <code>신군(아하)</code> → <code>신군</code>).</li>
+<li>디모데 교인 구분이 <code>교인 &gt; 청년 (A)</code> 또는 <code>(B)</code>이다.</li>
+</ul>
+</li>
+<li>후보가 정확히 한 명일 때만 확정한다. 두 명 이상이면 <code>교인복수일치</code>, 0명이면
+<code>정확한교인없음</code>으로 남긴다.</li>
+<li>이 경로로 확정한 사람에게 디모데 전화번호가 있으면 그 값을 시트 갱신 대상으로 삼는다
+(<a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a>).</li>
+</ul>
+<h4>기대 결과</h4>
+<p>동명이인이 있거나 청년 A/B가 아닌 사람은 절대 입력 대상이 되지 않는다.</p>
+<h4>예외 처리</h4>
+<p>모호한 경우 사람이 판단하도록 미처리로 남긴다. 추측으로 한 명을 고르지 않는다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>normalize_group</code>, <code>same_name_and_group</code>,
+<code>same_active_name_and_group</code>, <code>find_exact_person_card</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-PHONE-001">
+<h3><span class="idtag">REQ-PHONE-001</span> 빈 전화번호 보완</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>enrich_phone</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>시트에 전화번호가 비어 있는 행에 대해, 디모데에서 번호를 찾아 채워 넣어 식별 정확도를 높인다.</p>
+<h4>동작</h4>
+<ul>
+<li>번호가 비어 있고 <code>--skip-phone-lookup</code>이 꺼져 있을 때만 수행한다.</li>
+<li>이름으로 검색해 <code>이름+군</code>이 같고 교인 구분이 청년 A/B이며 전화번호가 있는 후보를 모은다.</li>
+<li>서로 다른 번호가 정확히 하나로 수렴할 때만 그 번호를 채택한다. 여러 개면 채택하지 않는다.</li>
+<li>채택한 번호는 이후 <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>의 검색에 쓰이고, 성공 시 시트에도 기록된다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>번호 누락만으로 확정에 실패하는 행이 줄고, 시트의 번호 공란이 검증된 값으로 보완된다.</p>
+<h4>예외 처리</h4>
+<p>보완에 실패해도 오류가 아니다. 번호 없는 상태로 <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a> 경로를 계속 진행한다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>enrich_phone</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-INPUT-001">
+<h3><span class="idtag">REQ-INPUT-001</span> 수료내역 중복 등록 방지</h3>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>같은 사람에게 같은 교육과정이 두 번 등록되지 않게 한다.</p>
+<h4>동작</h4>
+<ul>
+<li>저장 직전에 교인 상세 창에서 대상 교육과정명이 이미 목록에 있는지 확인한다.</li>
+<li>있으면 저장하지 않고 상태를 <code>이미입력됨</code>으로 남긴다. 이는 실패가 아니라 정상 종료다.</li>
+<li>중복 확인은 매 실행마다 디모데 화면에서 다시 수행한다. 시트의 체크 상태만 믿지 않는다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>디모데 저장 뒤 시트 체크 전에 프로그램이 중단되어도, 재실행 시 중복 등록이 발생하지 않는다.</p>
+<h4>예외 처리</h4>
+<p>상세 창을 열지 못하거나 확인할 수 없으면 저장하지 않는다. 확인 없는 저장은 허용하지 않는다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>process</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-INPUT-002">
+<h3><span class="idtag">REQ-INPUT-002</span> 수료내역 등록</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>확정된 교인에게 정해진 값으로 수료내역을 등록한다.</p>
+<h4>동작</h4>
+<ul>
+<li>교육과정: <a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a>에서 매핑된 <code>청년-</code> 과정명을 정확히 일치로 선택한다.</li>
+<li>상태: <code>수료</code></li>
+<li>수료일: <code>20260621</code></li>
+<li>수료연도: <code>2026</code></li>
+<li>강사명: 시트의 <code>담당자</code> 값</li>
+<li>저장 후 설정된 대기 시간만큼 기다린 뒤 상태를 <code>입력완료</code>로 남긴다.</li>
+<li>저장 여부와 무관하게 교인 상세 창은 닫는다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>디모데 화면에서 사람이 직접 입력했을 때와 같은 값이 남는다.</p>
+<h4>예외 처리</h4>
+<ul>
+<li>수료일·수료연도는 현재 코드 상수다. 기수가 바뀌면 사양과 코드를 함께 고쳐야 한다
+(13절 참조).</li>
+<li>화면 요소를 찾지 못하면 그 행에서 실패한다. 선택자를 증거 없이 추측해 고치지 않는다.</li>
+</ul>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>process</code>, 상수 <code>COMPLETE_STATUS</code>, <code>COMPLETE_DATE</code>,
+<code>COMPLETE_YEAR</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-SHEET-002">
+<h3><span class="idtag">REQ-SHEET-002</span> 입력여부 체크 동기화</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>update_sheet_result</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>Sheet의 <code>입력여부</code> 체크가 &quot;디모데에 실제로 존재함&quot;을 뜻하도록 유지한다.</p>
+<h4>동작</h4>
+<ul>
+<li>체크는 <strong>신규 저장 성공</strong> 또는 <strong>동일 과정 기존 등록 확인</strong> 뒤에만 수행한다.</li>
+<li>체크 대상 행은 <a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a>이 부여한 원본 시트 행 번호로 지정한다.</li>
+<li>같은 갱신에서, 보완된 전화번호가 있으면 <code>핸드폰</code> 열도 함께 기록한다.</li>
+<li>확정 실패·복수 일치·과정 미매핑 행은 체크하지 않는다.</li>
+</ul>
+<h4>기대 결과</h4>
+<p>체크되지 않은 행은 언제나 재실행 대상이 된다. 사람이 시트 값을 고친 뒤 다시 돌리면 된다.</p>
+<h4>예외 처리</h4>
+<p>Sheets 자격 증명이 없으면 체크를 수행하지 않는다. 이 상태로 실제 입력을 하려면
+<code>--defer-sheet-checks</code>를 명시해야 하며, 체크는 운영자가 별도로 맞춘다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>update_sheet_result</code>, <code>get_sheets_service</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></p>
+</section>
+<section class="card kind-req" id="REQ-REPORT-001">
+<h3><span class="idtag">REQ-REPORT-001</span> 미입력 사유 보고</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>목적</h4>
+<p>무엇을 왜 입력하지 않았는지 실행 후에 사람이 확인할 수 있게 한다.</p>
+<h4>동작</h4>
+<ul>
+<li><p>처리한 행마다 다음 상태 중 하나를 남긴다.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>상태</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td><code>드라이런확인</code></td><td>교인을 확정했으나 저장하지 않음</td></tr>
+<tr><td><code>입력완료</code></td><td>신규 수료내역 저장 성공</td></tr>
+<tr><td><code>이미입력됨</code></td><td>동일 과정이 있어 저장하지 않음</td></tr>
+<tr><td><code>정확한교인없음</code></td><td>전화번호로도 이름·군·A/B로도 확정하지 못함</td></tr>
+<tr><td><code>교인복수일치</code></td><td>조건에 맞는 사람이 복수라 중단</td></tr>
+<tr><td><code>교육과정매핑없음</code></td><td>허용되지 않았거나 제외된 과정</td></tr>
+</tbody>
+</table></div>
+</li>
+<li><p>결과는 <code>시트행 / 구분 / 군 / 팀 / 이름 / 핸드폰 / 담당자 / 교육과정 / 상태</code> 열의 CSV로
+<code>output/</code> 아래에 저장한다. 드라이런은 dry_run_plan.csv, 실제 입력은
+execution_result.csv다.</p></li>
+<li><p>행을 처리할 때마다 한 줄씩 <code>result_log.txt</code>에 append 한다. 실행이 중간에 끊겨도 어디까지
+진행됐는지 남는다.</p></li>
+</ul>
+<h4>기대 결과</h4>
+<p>실행 후 CSV만 보고 재작업 대상 행을 고를 수 있다.</p>
+<h4>예외 처리</h4>
+<p>결과 CSV는 매 실행마다 같은 파일명으로 덮어쓴다. 보관이 필요하면 실행 후 사람이 복사한다.</p>
+<h4>관련 구현</h4>
+<p><code>completion_automation.py</code> — <code>save_plan</code>, <code>log</code>, <code>process</code></p>
+<h4>관련 테스트</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></p>
+</section>
+</section>
+<section class="chapter" id="sec-6">
+<h2>6. 비기능 요구사항</h2>
+<section class="card kind-nfr" id="NFR-SEC-001">
+<h3><span class="idtag">NFR-SEC-001</span> 인증 정보 저장소 밖 보관</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>.gitignore</code>, <code>config.example.py</code></span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span></div>
+<details class="history"><summary>변경 이력 1</summary>
+<ul>
+<li><span class="hist">[Unreleased] · Added</span> <a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a> / <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a>: 저장소 위생 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>,
+<code>tests/test_repository_hygiene.py</code>). <code>.gitignore</code> 선언과 git의 실제 무시 동작을 따로
+확인하고, 추적 파일에 민감 산출물이 없는지, <code>config.example.py</code>에 실제 값이 없는지,
+시트 쓰기가 E·G 두 열로 제한되는지 본다. 이 프로젝트의 첫 자동 테스트다 — 두
+요구사항의 '측정'은 사람 눈이 필요 없고, 실수로 커밋한 개인정보는 되돌리기 어렵다.</li>
+</ul>
+</details>
+<h4>요구</h4>
+<p>인증 수단은 저장소 바깥에 두고, 어떤 산출물에도 값이 노출되지 않아야 한다.</p>
+<ul>
+<li>디모데 계정, Google 쿠키, Sheets OAuth 클라이언트·토큰 JSON은 <code>config.py</code>와 로컬 JSON
+파일에만 존재한다. 이 파일들은 <code>.gitignore</code>에 등록되어 있어야 한다.</li>
+<li><code>config.example.py</code>에는 자리표시자만 둔다. 실제 값이 들어가면 안 된다.</li>
+<li>로그, 결과 CSV, 커밋 메시지, 에이전트 응답에 자격 증명을 복사하지 않는다.</li>
+<li>OAuth scope는 Sheets 접근 하나로 제한한다.</li>
+</ul>
+<h4>측정</h4>
+<p>저장소 추적 파일에 자격 증명이 0건. <code>.gitignore</code>가 <code>config.py</code>, 인증 JSON, <code>output/</code>,
+<code>user_data/</code>, <code>result_log.txt</code>, 디버그 산출물을 모두 포함한다.</p>
+</section>
+<section class="card kind-nfr" id="NFR-DATA-001">
+<h3><span class="idtag">NFR-DATA-001</span> 개인정보 로컬 취급</h3>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span></div>
+<details class="history"><summary>변경 이력 1</summary>
+<ul>
+<li><span class="hist">[Unreleased] · Added</span> <a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a> / <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a>: 저장소 위생 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>,
+<code>tests/test_repository_hygiene.py</code>). <code>.gitignore</code> 선언과 git의 실제 무시 동작을 따로
+확인하고, 추적 파일에 민감 산출물이 없는지, <code>config.example.py</code>에 실제 값이 없는지,
+시트 쓰기가 E·G 두 열로 제한되는지 본다. 이 프로젝트의 첫 자동 테스트다 — 두
+요구사항의 '측정'은 사람 눈이 필요 없고, 실수로 커밋한 개인정보는 되돌리기 어렵다.</li>
+</ul>
+</details>
+<h4>요구</h4>
+<p>이 자동화가 다루는 값은 실명·연락처·소속을 포함하는 개인정보다. 취급 범위를 로컬로 제한한다.</p>
+<ul>
+<li>결과 CSV, 실행 로그, 브라우저 프로필, 디버그 HTML·이미지는 로컬에만 남고 저장소에
+올라가지 않는다.</li>
+<li>개인정보를 Knowledge, Evidence, 사양 문서, 이슈에 옮겨 적지 않는다. 필요하면 건수와
+사유 범주만 쓴다.</li>
+<li>시트 쓰기는 <code>핸드폰</code>(E열)과 <code>입력여부</code>(G열) 두 칸으로 제한한다. 다른 열을 덮어쓰지 않는다.</li>
+</ul>
+<h4>측정</h4>
+<p>저장소에 커밋된 개인정보 파일 0건. 시트 쓰기 대상 열 2개 고정.</p>
+</section>
+<section class="card kind-nfr" id="NFR-OPS-001">
+<h3><span class="idtag">NFR-OPS-001</span> 사람이 지켜보는 수동 실행</h3>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>main</code>, <code>search_person_cards</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<h4>요구</h4>
+<p>사람이 지켜보는 상태에서 수동으로 실행하며, 대상 사이트에 과부하를 주지 않는다.</p>
+<ul>
+<li>Chromium은 화면이 보이는 모드로 띄운다. 무인·headless 실행을 전제하지 않는다.</li>
+<li>검색 후 기본 0.8초, 저장 후 기본 1.0초를 대기한다. 설정으로 늘릴 수 있다.</li>
+<li>실행 순서는 항상 <code>--limit</code>을 건 드라이런 → 전체 드라이런 → <code>--execute --limit 1</code> →
+전체 실행이다.</li>
+<li>스케줄러·CI에서 실행하지 않는다.</li>
+</ul>
+<h4>측정</h4>
+<p>실행 1회당 검색 요청 간 최소 간격 0.8초. 무인 실행 경로 0개.</p>
+</section>
+</section>
+<section class="chapter" id="sec-7">
+<h2>7. 데이터 사양</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>데이터</th><th>형태</th><th>위치</th><th>취급</th></tr></thead>
+<tbody>
+<tr><td>수료자 명단</td><td>7열 표 (<code>구분 / 군 / 팀 / 이름 / 핸드폰 / 담당자 / 입력여부</code>)</td><td>Google Sheet 대상 탭</td><td>원본. 이 자동화는 E·G열만 쓴다.</td></tr>
+<tr><td>디모데 교인 정보</td><td>검색 결과 카드 텍스트에서 파싱한 이름·전화번호·군·팀·교인구분</td><td>메모리에만 존재</td><td>저장하지 않는다.</td></tr>
+<tr><td>처리 결과</td><td>9열 CSV</td><td><code>output/</code></td><td>실행마다 덮어쓴다. 저장소 제외.</td></tr>
+<tr><td>실행 로그</td><td>행 단위 텍스트 append</td><td><code>result_log.txt</code> (설정으로 변경 가능)</td><td>누적. 저장소 제외.</td></tr>
+<tr><td>브라우저 프로필·디버그 산출물</td><td>Playwright 데이터, HTML·PNG</td><td>프로젝트 로컬 디렉터리</td><td>진단에 필요할 때만 열람. 저장소 제외.</td></tr>
+<tr><td>자격 증명</td><td>설정 모듈, OAuth 클라이언트·토큰 JSON</td><td>프로젝트 로컬</td><td><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a>.</td></tr>
+</tbody>
+</table></div>
+<p>보존 기간은 정해져 있지 않다(13절 참조). 결과 CSV와 로그는 사람이 직접 정리한다.</p>
+</section>
+<section class="chapter" id="sec-8">
+<h2>8. Configuration 사양</h2>
+<p>설정은 <code>config.py</code> 하나에서 읽는다. 예시는 <code>config.example.py</code>에 있다.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>항목</th><th>필수</th><th>기본값</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td><code>SHEET_URL</code></td><td>예</td><td>없음</td><td>대상 스프레드시트 URL. 여기서 ID와 gid를 추출한다.</td></tr>
+<tr><td><code>SHEET_TAB_NAME</code></td><td>아니오</td><td><code>통합 명단</code></td><td>읽고 쓸 탭 이름.</td></tr>
+<tr><td><code>GOOGLE_COOKIES</code></td><td>아니오</td><td>없음</td><td>OAuth가 없을 때 CSV export용 쿠키. 만료되면 401.</td></tr>
+<tr><td><code>DIMODE_URL</code></td><td>예</td><td>없음</td><td>디모데 로그인 페이지 URL.</td></tr>
+<tr><td><code>USER_ID</code> / <code>USER_PW</code></td><td>예</td><td>없음</td><td>디모데 계정.</td></tr>
+<tr><td><code>GOOGLE_OAUTH_CLIENT_FILE</code></td><td>실제 입력 시 예</td><td>프로젝트 내 클라이언트 JSON</td><td>Desktop OAuth 클라이언트 파일 경로.</td></tr>
+<tr><td><code>GOOGLE_OAUTH_TOKEN_FILE</code></td><td>아니오</td><td>프로젝트 내 토큰 JSON</td><td>승인 후 자동 생성·갱신되는 토큰 경로.</td></tr>
+<tr><td><code>EDU_COURSE_MAP</code></td><td>아니오</td><td>빈 dict</td><td>기본 매핑에 더할 과정. 제외 목록은 추가해도 무시된다.</td></tr>
+<tr><td><code>LOG_FILE</code></td><td>아니오</td><td><code>result_log.txt</code></td><td>실행 로그 경로. 상대경로는 프로젝트 기준.</td></tr>
+<tr><td><code>SEARCH_DELAY</code></td><td>아니오</td><td>0.8</td><td>검색 후 대기 초.</td></tr>
+<tr><td><code>SAVE_DELAY</code></td><td>아니오</td><td>1.0</td><td>저장 후 대기 초.</td></tr>
+</tbody>
+</table></div>
+<p>나머지는 CLI 인자로 받는다(<a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>). 환경변수는 사용하지 않는다.</p>
+</section>
+<section class="chapter" id="sec-9">
+<h2>9. 오류 처리 정책</h2>
+<ul>
+<li><strong>재시도하지 않는다.</strong> 검색·저장 실패를 자동으로 다시 시도하지 않는다. 재시도는 사람이
+원인을 확인한 뒤 프로그램을 다시 실행하는 방식으로만 한다. 중복 방지(<a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a>)가
+재실행을 안전하게 만든다.</li>
+<li><strong>부분 성공을 허용한다.</strong> 확정 실패, 복수 일치, 과정 미매핑은 그 행의 상태로 기록하고
+다음 행으로 넘어간다. 한 사람 때문에 전체 실행을 멈추지 않는다.</li>
+<li><strong>중단 기준.</strong> 다음은 행 단위 상태가 아니라 실행 중단 사유다.
+<ul>
+<li><code>SHEET_URL</code>에서 스프레드시트 ID를 얻지 못함.</li>
+<li>쿠키 만료(401)로 명단을 읽지 못함.</li>
+<li><code>--execute</code>인데 필요한 OAuth 클라이언트 파일이 없음.</li>
+<li>Playwright 미설치.</li>
+<li>로그인 실패나 화면 구조 변경으로 검색 화면에 도달하지 못함.</li>
+</ul>
+</li>
+<li><strong>기록 위치.</strong> 행 단위 결과는 <code>output/</code>의 CSV와 <code>result_log.txt</code>에 남는다. 로그는 행마다
+즉시 append 하므로 중단되어도 진행 지점을 알 수 있다. 단, 결과 CSV는 실행이 끝까지
+진행돼야 저장된다.</li>
+<li><strong>선택자 실패.</strong> 디모데 화면 구조 변경이 의심되면 실제 입력을 멈추고 드라이런부터 다시
+확인한다. 증거 없이 선택자를 바꾸지 않는다.</li>
+</ul>
+</section>
+<section class="chapter" id="sec-10">
+<h2>10. 보안 요구사항</h2>
+<ul>
+<li>인증 수단은 둘이다: 디모데 ID/비밀번호(설정 파일), Google Sheets OAuth 토큰(로컬 JSON).
+쿠키 방식은 드라이런의 임시 수단으로만 허용하고 운영에는 쓰지 않는다.</li>
+<li>저장소에 들어가면 안 되는 것: <code>config.py</code>, OAuth 클라이언트·토큰 JSON, 쿠키 값,
+<code>output/</code>, <code>user_data/</code>, <code>result_log.txt</code>, 디버그 HTML·이미지.</li>
+<li>접근 범위: Google 쪽은 Sheets scope 하나, 디모데 쪽은 해당 계정이 원래 가진 청년관리
+권한을 넘지 않는다. 이 자동화는 권한을 확대하지 않는다.</li>
+<li>토큰은 만료 시 refresh token으로 갱신하고, 갱신 결과를 같은 로컬 파일에 다시 쓴다.</li>
+<li>에이전트는 설정 파일과 자격 증명 파일의 내용을 열어 응답에 싣지 않는다.</li>
+</ul>
+</section>
+<section class="chapter" id="sec-11">
+<h2>11. 테스트 사양</h2>
+<p>ID 규칙: <code>TEST-&lt;CATEGORY&gt;-NNN</code>.</p>
+<p><strong>이 프로젝트에는 자동화된 테스트가 없다.</strong> 테스트 프레임워크도, 테스트 파일도 없다.
+아래 항목은 모두 사람이 수행하는 수동 검증 절차이며, 추적성 표의 Test 열에 <code>(수동)</code>으로
+표시한다. 자동 테스트 도입 여부는 13절의 미확정 사항이다.</p>
+<section class="card kind-test" id="TEST-SYNTAX-001">
+<h3><span class="idtag">TEST-SYNTAX-001</span></h3>
+<h4>검증 대상</h4>
+<p><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a> (구문 수준 회귀 방지)</p>
+<h4>선행 조건</h4>
+<p>프로젝트 가상환경이 설치되어 있다. 외부 접근은 필요 없다.</p>
+<h4>절차</h4>
+<ol>
+<li>프로젝트 루트에서 <code>.venv/bin/python -m py_compile main.py completion_automation.py config.example.py</code>를 실행한다.</li>
+</ol>
+<h4>Expected Result</h4>
+<p>출력 없이 종료 코드 0. 이 검사는 문법만 본다 — 동작을 검증하지 않는다.</p>
+</section>
+<section class="card kind-test" id="TEST-DRYRUN-001">
+<h3><span class="idtag">TEST-DRYRUN-001</span></h3>
+<div class="card-meta"><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a>, <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>, <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a>, <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a>, <a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span></div>
+<h4>검증 대상</h4>
+<p><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a>, <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a>, <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>, <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a>,
+<a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></p>
+<h4>선행 조건</h4>
+<p>설정이 완료되어 있고, 디모데 로그인과 시트 접근이 가능하다. 외부 조회가 발생하므로
+사용자가 명시적으로 요청했을 때만 수행한다.</p>
+<h4>절차</h4>
+<ol>
+<li><code>python main.py --limit 5</code>를 실행한다.</li>
+<li>브라우저가 뜨고 로그인·검색이 진행되는 것을 화면으로 확인한다.</li>
+<li><code>output/</code> 아래 드라이런 계획 CSV를 연다.</li>
+<li>각 행의 <code>상태</code>가 <code>드라이런확인</code> / <code>정확한교인없음</code> / <code>교인복수일치</code> /
+<code>교육과정매핑없음</code> 중 하나인지 본다.</li>
+<li>번호가 비어 있던 행에 보완된 번호가 채워졌는지 본다.</li>
+<li>대상 시트를 열어 아무 값도 바뀌지 않았음을 확인한다.</li>
+</ol>
+<h4>Expected Result</h4>
+<p>디모데와 시트가 전혀 변경되지 않는다. 처리한 행 수가 5를 넘지 않는다. 각 행에 판정
+사유가 남는다.</p>
+</section>
+<section class="card kind-test" id="TEST-EXEC-001">
+<h3><span class="idtag">TEST-EXEC-001</span></h3>
+<div class="card-meta"><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>, <a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a>, <a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a></span></div>
+<h4>검증 대상</h4>
+<p><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>, <a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a>, <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></p>
+<h4>선행 조건</h4>
+<p><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>이 끝났고 결과에 이상이 없다. OAuth 승인이 완료되어 있다.
+사용자가 실제 입력을 명시적으로 요청했다.</p>
+<h4>절차</h4>
+<ol>
+<li><code>python main.py --execute --limit 1</code>을 실행한다.</li>
+<li>디모데에서 그 교인의 상세 화면을 직접 열어 교육과정·상태·수료일·수료연도·강사명을
+눈으로 확인한다.</li>
+<li>시트에서 해당 행의 <code>입력여부</code>가 체크되었는지, 번호가 보완되었다면 <code>핸드폰</code>이
+채워졌는지 확인한다.</li>
+<li>결과 CSV에서 그 행의 상태가 <code>입력완료</code>인지 본다.</li>
+</ol>
+<h4>Expected Result</h4>
+<p>한 명만 입력된다. 디모데 값이 사양의 상수와 일치한다. 성공한 그 행만 체크된다.</p>
+</section>
+<section class="card kind-test" id="TEST-DUP-001">
+<h3><span class="idtag">TEST-DUP-001</span></h3>
+<div class="card-meta"><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a></span></div>
+<h4>검증 대상</h4>
+<p><a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a></p>
+<h4>선행 조건</h4>
+<p><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a>로 입력된 사람이 있고, 그 행의 <code>입력여부</code> 체크를 수동으로 해제해 둔다.</p>
+<h4>절차</h4>
+<ol>
+<li><code>python main.py --execute --limit 1</code>을 그 행이 대상이 되도록 다시 실행한다.</li>
+<li>디모데 상세 화면에서 같은 교육과정이 하나뿐인지 확인한다.</li>
+<li>결과 CSV의 상태를 본다.</li>
+</ol>
+<h4>Expected Result</h4>
+<p>상태가 <code>이미입력됨</code>이고 교육과정이 중복 등록되지 않는다. 시트는 다시 체크된다.</p>
+</section>
+<section class="card kind-test" id="TEST-HYGIENE-001">
+<h3><span class="idtag">TEST-HYGIENE-001</span></h3>
+<details class="history"><summary>변경 이력 1</summary>
+<ul>
+<li><span class="hist">[Unreleased] · Added</span> <a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a> / <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a>: 저장소 위생 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>,
+<code>tests/test_repository_hygiene.py</code>). <code>.gitignore</code> 선언과 git의 실제 무시 동작을 따로
+확인하고, 추적 파일에 민감 산출물이 없는지, <code>config.example.py</code>에 실제 값이 없는지,
+시트 쓰기가 E·G 두 열로 제한되는지 본다. 이 프로젝트의 첫 자동 테스트다 — 두
+요구사항의 '측정'은 사람 눈이 필요 없고, 실수로 커밋한 개인정보는 되돌리기 어렵다.</li>
+</ul>
+</details>
+<h4>검증 대상</h4>
+<p><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a>, <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></p>
+<h4>선행 조건</h4>
+<p>없음. 자격 증명도 network도 쓰지 않는다 — git 추적 목록과 소스만 읽으므로 언제든 돌릴 수
+있다. 이 프로젝트의 다른 TEST는 전부 수동 절차지만 이 둘의 '측정'은 기계가 답할 수 있다.</p>
+<h4>절차</h4>
+<p><code>.venv/bin/python -m unittest discover -s tests</code>를 실행한다
+(<code>tests/test_repository_hygiene.py</code>).</p>
+<h4>Expected Result</h4>
+<p><code>.gitignore</code>가 <code>config.py</code>, <code>credentials.json</code>, <code>token.json</code>, <code>output/</code>, <code>user_data/</code>,
+<code>result_log.txt</code>, <code>debug_*.html</code>, <code>debug_*.png</code>를 모두 덮고, git이 그 경로들을 <strong>실제로</strong>
+무시한다(선언과 동작을 따로 확인한다 — 뒤의 negation 규칙이 앞을 덮을 수 있다).
+추적 중인 파일에 민감 산출물이 0건이고, <code>config.example.py</code>에 실제 스프레드시트 ID나
+이메일 주소가 없다. <code>update_sheet_result</code>가 만드는 시트 range의 열이 정확히 <code>E</code>와 <code>G</code>이며,
+시트에 쓰는 함수가 그 하나뿐이다(다른 쓰기 경로가 생기면 열 검사가 범위를 놓친다).</p>
+</section>
+</section>
+<section class="chapter" id="sec-12">
+<h2>12. 요구사항 추적성</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Requirement</th><th>Implementation</th><th>Test</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a></td><td><code>completion_automation.py</code> (<code>load_sheet_rows</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></td><td><code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a></td><td><code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a></td><td><code>completion_automation.py</code> (<code>find_exact_person_card</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a></td><td><code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a></td><td><code>completion_automation.py</code> (<code>enrich_phone</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a></td><td><code>completion_automation.py</code> (<code>process</code>)</td><td><a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a> (수동)</td><td><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a></td><td><code>completion_automation.py</code> (<code>process</code>)</td><td><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a></td><td><code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></td><td><code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a></td><td><code>.gitignore</code>, <code>config.example.py</code></td><td><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></td><td><code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td><td><span class="badge st-verified">verified</span></td></tr>
+<tr><td><a class="idref" href="#NFR-OPS-001">NFR-OPS-001</a></td><td><code>completion_automation.py</code> (<code>main</code>, <code>search_person_cards</code>)</td><td><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td><span class="badge st-implemented">implemented</span></td></tr>
+</tbody>
+</table></div>
+<p>Status 값: <code>draft</code> (사양만 있음) / <code>implemented</code> / <code>verified</code> (실제 실행까지 확인) /
+<code>deprecated</code>.</p>
+<p><code>verified</code>의 근거는 <code>README.md</code>에 기록된 2026-08-11 실제 실행이다(대상 206행, 체크 174행,
+요청에 따른 제외 31행, 확정 실패 1행). <a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a>은 그 실행에서 <code>이미입력됨</code> 경로가
+실제로 발생했는지 기록이 남아 있지 않아 <code>implemented</code>로 둔다.</p>
+</section>
+<section class="chapter" id="sec-13">
+<h2>13. 미확정 사항</h2>
+<ul>
+<li><strong>수료일·수료연도가 코드 상수다.</strong> <code>20260621</code> / <code>2026</code>이 고정되어 있어 다음 기수에는
+반드시 코드를 고쳐야 한다. 설정 항목이나 CLI 인자로 빼야 하는지, 그렇다면 시트의 열로
+받아야 하는지 정해지지 않았다.</li>
+<li><strong>제외 교육과정의 최종 처리.</strong> <code>기초반</code>, <code>예배학교</code>, <code>결혼예비학교</code>는 &quot;추후 확정 후
+사용자 요청 시&quot;로만 적혀 있다. 디모데의 정확한 과정 명칭도, 입력할지 여부도 미확정이다.</li>
+<li><strong>호출되지 않는 팀 비교 함수.</strong> 확정 경로는 <code>이름 + 군 + 청년 A/B</code>이고 <code>팀</code>은 판정에 쓰지
+않는다(2026-09-19 확정, 문서를 코드에 맞춤). <code>identity_matches</code>, <code>normalize_team</code>은
+정의만 되어 있고 호출되지 않는다 — 지울지, 시트 소속 확인용으로 쓸지는 정해지지 않았다.</li>
+<li><strong><code>--defer-sheet-checks</code>의 후속 절차.</strong> 미룬 체크를 누가 어떤 방법으로 맞추는지 정해진
+절차가 없다. 또한 이 옵션을 켜도 OAuth 파일이 존재하면 체크가 그대로 수행되는데, 이것이
+의도인지(자격 증명이 있으면 체크한다) 아니면 항상 보류해야 하는지 확정되지 않았다.</li>
+<li><strong>자동 테스트 도입 범위.</strong> 현재 테스트가 없다. 순수 함수(<code>format_phone</code>,
+<code>normalize_group</code>, <code>is_checked</code>, <code>course_map</code>)만 단위 테스트로 덮을지, Playwright 경로도
+대상으로 할지 결정되지 않았다.</li>
+<li><strong>결과 CSV와 실행 로그의 보존 기간.</strong> 개인정보를 담는데 정리 주기나 삭제 기준이 없다.</li>
+<li><strong>Owner.</strong> 저장소에 운영 책임자가 명시되어 있지 않다.</li>
+</ul>
+</section>
+<section class="chapter" id="sec-14">
+<h2>14. 향후 개선 후보</h2>
+<ul>
+<li>수료일·수료연도·상태를 시트 열이나 CLI 인자로 받아 기수마다 코드를 고치지 않게 한다.</li>
+<li>결과 CSV를 실행 시각이 들어간 파일명으로 저장해 이전 실행 결과를 덮어쓰지 않게 한다.</li>
+<li>순수 함수에 대한 단위 테스트와, 저장된 HTML fixture로 <code>parse_person_card</code>를 검증하는
+테스트를 추가한다.</li>
+<li>디모데 화면 selector를 한곳에 모아 UI 변경 시 수정 범위를 좁힌다.</li>
+<li><code>정확한교인없음</code> 행만 모아 사람이 판단할 수 있게 후보 목록을 함께 출력한다.</li>
+</ul>
+</section>
+</main>
+</div>
+<footer>이 페이지는 <code>SPEC.md</code>에서 생성된 사본입니다. 직접 고치지 말고 <code>SPEC.md</code>를 고친 뒤 <code>node .project-check/render-spec-html.js .</code>를 실행하세요.</footer>
+<script>(function(){var f=document.getElementById('toc-filter');if(!f)return;f.addEventListener('input',function(){var q=f.value.trim().toLowerCase();
+document.querySelectorAll('.toc li').forEach(function(li){li.classList.toggle('hidden',q!==''&&li.textContent.toLowerCase().indexOf(q)<0);});});})();</script>
+</body>
+</html>

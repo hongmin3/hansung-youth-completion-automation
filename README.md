@@ -65,7 +65,7 @@ https://docs.google.com/spreadsheets/d/1ZDMY1uPsekhh9vqoSt89oBB6T-RPZkb501l-pvgZ
 ## 설치
 
 ```bash
-cd ~/Desktop/자동화/'새가족 수료여부 자동입력'
+cd ~/Desktop/자동화/dimode-completion-input
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
@@ -113,7 +113,7 @@ GOOGLE_OAUTH_TOKEN_FILE = "token.json"
 가상환경을 활성화합니다.
 
 ```bash
-cd ~/Desktop/자동화/'새가족 수료여부 자동입력'
+cd ~/Desktop/자동화/dimode-completion-input
 source .venv/bin/activate
 ```
 
@@ -167,7 +167,7 @@ python main.py --skip-phone-lookup
 | `드라이런확인` | 교인을 찾았지만 저장하지 않음 |
 | `입력완료` | 신규 수료내역 저장 성공 |
 | `이미입력됨` | 동일 과정이 있어 중복 저장하지 않음 |
-| `정확한교인없음` | 전화번호 또는 이름·군·팀으로 확정하지 못함 |
+| `정확한교인없음` | 전화번호로 못 찾았고, 이름·군·청년 A/B 조건에 맞는 사람도 한 명으로 좁혀지지 않음 |
 | `교인복수일치` | 같은 조건의 사람이 복수라 안전하게 중단 |
 | `교육과정매핑없음` | 허용되지 않았거나 제외된 과정 |
 
@@ -188,7 +188,7 @@ python main.py --skip-phone-lookup
 
 - 전화번호가 있으면 시트와 디모데의 이름·전화번호를 확인합니다.
 - 번호가 없으면 이름과 정규화한 군이 같고, 교인 구분이 A/B이며, 그 조건의 결과가 한 명이어야 합니다.
-- 팀 이름의 오탈자나 현재 디모데 소속 변경 여부를 확인한 뒤 다시 실행합니다.
+- `팀`은 동일인 판정에 쓰이지 않습니다. 시트의 팀이 달라도 이름·군·청년 A/B가 맞으면 그대로 진행하며, 그래도 확정되지 않으면 동명이인이나 최신 소속 변경 여부를 확인한 뒤 다시 실행합니다.
 
 ### 동일 과정이 이미 있음
 
@@ -199,7 +199,6 @@ python main.py --skip-phone-lookup
 실제 실행을 중단하고 드라이런부터 다시 확인합니다. `completion_automation.py`의 검색·상세 창 선택자를 새 화면 구조에 맞게 수정해야 합니다.
 
 ## 2026-08-11 실제 실행 검증
-
 - 대상 206행
 - 입력 또는 기존 등록 확인 후 체크: 174행
 - 사용자 요청에 따라 제외하고 미입력: 31행
@@ -210,14 +209,12 @@ python main.py --skip-phone-lookup
 
 미입력 1행은 `이현우(성경대학)`입니다. 시트의 `입력여부`를 체크하지 않았으므로 정보 보완 후 재실행 대상입니다. 윤진은 시트의 군을 `영군`에서 `임군`으로 정정한 뒤 입력을 완료했습니다.
 
-## AI 에이전트 Context 관리 (Akela)
+## AI Agent Context
 
-이 프로젝트는 [Akela](https://github.com/TimothyHan/akela)를 사용해 Codex/Claude Code 같은 AI 에이전트가 작업할 때 전체 문서를 다 읽는 대신 필요한 지식만 골라 압축된 컨텍스트로 제공받습니다. 런타임 의존성이 아니며 실행/배포 동작에는 전혀 영향을 주지 않습니다.
+이 저장소는 작업별 AI 컨텍스트 관리를 위해 Akela를 사용합니다. Akela는 자동입력 Runtime Dependency가 아닙니다.
 
 - Knowledge: `knowledge/`
-- Protocol: `akela/PROTOCOL.md`
-- 설정: `akela.json`
+- Agent Protocol: `akela/PROTOCOL.md`
+- Configuration: `akela.json`
 
-작업 종류(activity)별로 관련 지식만 컴파일해서 사용하므로 매 작업마다 전체 문서를 컨텍스트에 넣을 때보다 토큰 사용량이 크게 줄어듭니다. 기본 흐름:
-
-knowledge/ → `akela compile` → 작업별 slice.md → Codex/Claude 작업 → `akela log`로 Evidence 기록 → `akela stats`/curate로 지식 유지보수
+Codex와 Claude Code는 Task slice를 compile하고 드라이런·실행 규칙에 따라 작업한 뒤 Evidence와 outcome을 기록합니다. `akela stats`와 `akela/CURATE.md`는 사람이 Knowledge 승격·수정·폐기를 검토하는 데 사용합니다.
