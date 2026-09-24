@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="automation-workspace render-spec-html v5">
 <meta name="spec-html-renderer" content="v5">
-<meta name="spec-source-sha256" content="ad500951a1b1a91a7c02a002ea34b465e8cb05ab7f8d6cefc5ba22017c16a270">
+<meta name="spec-source-sha256" content="2dfbc6339a704e8f1f6c74a0017d3629dee383eb8d1aa912ef29217779b3505e">
 <title>청년 양육 수료내역 디모데 자동입력 사양서</title>
 <style>:root{--bg:#f7f8fa;--panel:#fff;--text:#1d2330;--muted:#5d6678;--line:#e2e6ee;--accent:#2f6fde;--code:#f1f3f7;
 --req:#2f6fde;--nfr:#8a4fd8;--test:#15907a;--draft:#8a93a6;--implemented:#c98a12;--verified:#1f9d55;--deprecated:#c2413a;--active:#2f6fde;
@@ -871,9 +871,9 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 <section class="chapter" id="sec-11">
 <h2>11. 테스트 사양</h2>
 <p>ID 규칙: <code>TEST-&lt;CATEGORY&gt;-NNN</code>.</p>
-<p>이 프로젝트에는 <strong>자동으로 도는 테스트가 없다</strong>. 테스트 도구(프레임워크)도, 테스트 파일도 없다.</p>
-<p>아래 항목은 모두 사람이 직접 하는 확인 절차다. 추적성 표의 Test 열에는 <code>(수동)</code>으로 표시한다.
-자동 테스트를 들일지는 13절에 적은 아직 정하지 않은 일이다.</p>
+<p>저장소와 시트 쓰기 범위를 확인하는 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>)가 하나 있다.
+그 밖의 항목은 사람이 직접 하는 확인 절차다. 추적성 표의 Test 열에는 <code>(수동)</code>으로 표시한다.
+자동 검사를 어디까지 더할지는 13절에 적은 아직 정하지 않은 일이다.</p>
 <section class="card kind-test" id="TEST-SYNTAX-001">
 <h3><span class="idtag">TEST-SYNTAX-001</span></h3>
 <section class="field"><h4>검증 대상</h4><div class="field-body">
@@ -973,13 +973,14 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-test" id="TEST-HYGIENE-001">
 <h3><span class="idtag">TEST-HYGIENE-001</span></h3>
-<details class="history"><summary>변경 이력 1</summary>
+<details class="history"><summary>변경 이력 2</summary>
 <ul>
 <li><span class="hist">[Unreleased] · Added</span> <a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a> / <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a>: 저장소 위생 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>,
 <code>tests/test_repository_hygiene.py</code>). <code>.gitignore</code> 선언과 git의 실제 무시 동작을 따로
 확인하고, 추적 파일에 민감 산출물이 없는지, <code>config.example.py</code>에 실제 값이 없는지,
 시트 쓰기가 E·G 두 열로 제한되는지 본다. 이 프로젝트의 첫 자동 테스트다 — 두
 요구사항의 '측정'은 사람 눈이 필요 없고, 실수로 커밋한 개인정보는 되돌리기 어렵다.</li>
+<li><span class="hist">[Unreleased] · Changed</span> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>: 자동 검사가 없다는 11절·13절의 오래된 설명을 고쳤다. 현재는 저장소 위생 자동 검사 하나가 있고, 다른 절차는 수동이다.</li>
 </ul>
 </details>
 <section class="field"><h4>검증 대상</h4><div class="field-body">
@@ -1066,9 +1067,9 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 <li>이것이 의도인지(자격 증명이 있으면 체크한다), 아니면 늘 미뤄야 하는지 정하지 않았다.</li>
 </ul>
 </li>
-<li><strong>자동 테스트를 어디까지 들일지.</strong> 지금은 테스트가 없다. 입력만으로 결과가 정해지는 함수
-(<code>format_phone</code>, <code>normalize_group</code>, <code>is_checked</code>, <code>course_map</code>)만 단위 테스트로 확인할지,
-<span class="term" title="브라우저(Chromium)를 프로그램으로 조작하는 도구다." tabindex="0">Playwright</span> 경로도 대상으로 할지 정하지 않았다.</li>
+<li><strong>자동 테스트를 어디까지 더할지.</strong> 지금은 저장소 위생 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>)만 있다.
+입력만으로 결과가 정해지는 함수(<code>format_phone</code>, <code>normalize_group</code>, <code>is_checked</code>, <code>course_map</code>)를
+단위 테스트로 확인할지, <span class="term" title="브라우저(Chromium)를 프로그램으로 조작하는 도구다." tabindex="0">Playwright</span> 경로도 대상으로 할지 정하지 않았다.</li>
 <li><strong>결과 CSV와 실행 로그를 얼마나 둘지.</strong> 개인정보가 들어 있는데 정리 주기나 지울 기준이 없다.</li>
 <li><strong>Owner.</strong> 저장소에 운영 책임자가 적혀 있지 않다.</li>
 </ul>
