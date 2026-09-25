@@ -65,7 +65,7 @@ https://docs.google.com/spreadsheets/d/1ZDMY1uPsekhh9vqoSt89oBB6T-RPZkb501l-pvgZ
 ## 설치
 
 ```bash
-cd ~/Desktop/자동화/dimode-completion-input
+cd projects/dimode-completion-input   # 워크스페이스 루트에서
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
@@ -113,7 +113,7 @@ GOOGLE_OAUTH_TOKEN_FILE = "token.json"
 가상환경을 활성화합니다.
 
 ```bash
-cd ~/Desktop/자동화/dimode-completion-input
+cd projects/dimode-completion-input   # 워크스페이스 루트에서
 source .venv/bin/activate
 ```
 

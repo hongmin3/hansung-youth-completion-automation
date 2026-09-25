@@ -67,7 +67,7 @@ Google Sheet의 교육 수료 명단을 읽고 Playwright로 디모데 교인을
 
 ## 상세 정보
 
-설치, OAuth, 실행 옵션, 결과 상태, 문제 해결은 `README.md`에 있다. Apps Script 코드 위치는 `../docs/APPS_SCRIPT.md`를 필요할 때만 읽는다.
+설치, OAuth, 실행 옵션, 결과 상태, 문제 해결은 `README.md`에 있다. Apps Script 코드 위치는 워크스페이스 루트의 로컬 문서 `docs/APPS_SCRIPT.md`를 필요할 때만 읽는다(프로젝트 배치와 무관하게 루트 기준).
 
 ## 읽기 범위
 
