@@ -1,6 +1,45 @@
-# AGENTS.md
+# 디모데 수료내역 자동입력 AI 인덱스
 
-Follow `akela/PROTOCOL.md` for every task.
+Invoke the `task-observer` skill before the first tool call.
+
+Follow `akela/PROTOCOL.md` for every task. 프로젝트 도메인 규칙은 compile된 slice를 기준으로 사용한다.
+
+## 목적과 구조
+
+Google Sheet의 교육 수료 명단을 읽고 Playwright로 디모데 교인을 검증해 수료내역을 입력하며 성공 행만 시트에 표시한다.
+
+- CLI 진입점: `main.py`
+- 핵심 로직: `completion_automation.py`
+- 설정 예시: `config.example.py`
+- 로컬 비밀 설정: `config.py`
+- 의존성: `requirements.txt`
+- 운영 설명과 검증 기록: `README.md`
+
+이 프로젝트는 Apps Script 코드를 갖지 않는다. Apps Script 운영 기준은 `../newacts-newcomer-automation/`이다.
+
+## 작업 시작 순서
+
+1. 이어지는 작업이면 `progress.md`를 확인한다.
+2. CLI 옵션이면 `main.py`, 검색·검증·저장이면 `completion_automation.py`의 대상 함수만 확인한다.
+3. 실제 실행 절차가 필요할 때만 README 해당 절을 읽는다.
+4. 여러 단계 변경이면 시트와 디모데 각각의 영향 및 드라이런 방법을 먼저 정리한다.
+
+## 안전한 확인 명령
+
+```bash
+.venv/bin/python -m py_compile main.py completion_automation.py config.example.py
+.venv/bin/python main.py --limit 5
+```
+
+두 번째 명령은 드라이런이지만 외부 시스템을 조회할 수 있다. 인증과 외부 접근이 요청 범위에 있을 때만 실행한다. `--execute`는 실제 데이터를 변경하므로 사용자의 명시적 요청 없이는 사용하지 않는다.
+
+## 변경 금지 및 주의
+
+- 교육과정 허용·제외 목록, 동일인 판정, 중복 방지, 성공 후 체크 순서를 임의 변경하지 않는다.
+- `config.py`, `credentials.json`, `token.json`, 쿠키, 계정 정보를 읽어 출력하거나 커밋하지 않는다.
+- `output/`, `user_data/`, 디버그 HTML·이미지, 실행 로그는 진단에 꼭 필요할 때만 확인한다.
+- 디모데 UI 선택자 변경은 실제 화면 변화의 증거 없이 추측하지 않는다.
+- Apps Script 수정 요청은 `../newacts-newcomer-automation/AGENTS.md`를 우선한다.
 
 ## Project Root 탐색 규칙
 
@@ -18,6 +57,24 @@ Follow `akela/PROTOCOL.md` for every task.
 
 `config.py`, `credentials.json`, `token.json`은 `.gitignore` 대상이며 저장소에 커밋되어서는 안 된다. 만약 이 파일들이 실제로 존재하는 것을 발견하면 절대 열람하거나 커밋하지 않는다. 교인 개인정보(이름 등)는 어떤 산출물(지식 문서, 커밋 메시지, 보고 등)에도 포함하지 않는다.
 
+## 컨텍스트 효율
+
+- 제외: `.git/`, `.venv/`, `__pycache__/`, `user_data/`, `output/`, `config.py`, 인증 JSON, `result_log.txt`, `debug_*`.
+- 대형 `completion_automation.py`는 함수명이나 오류 문자열을 먼저 검색하고 필요한 줄만 읽는다.
+- README의 실제 실행 기록은 운영 이력 확인이 필요한 경우에만 읽는다.
+- READ-ONCE를 적용하고 수정 후 diff와 문법 검사 또는 대상 드라이런만 확인한다.
+- 성공 로그 전체 대신 처리 요약만, 실패 시 해당 대상과 오류 주변만 확인한다.
+
+## 상세 정보
+
+설치, OAuth, 실행 옵션, 결과 상태, 문제 해결은 `README.md`에 있다. Apps Script 코드 위치는 워크스페이스 루트의 로컬 문서 `docs/APPS_SCRIPT.md`를 필요할 때만 읽는다(프로젝트 배치와 무관하게 루트 기준).
+
+## 읽기 범위
+
+요청 대상 함수와 README의 필요한 절만 확인한다.
+
+이 절은 이전에 `CLAUDE.md`에만 있어 Codex가 볼 수 없던 규칙이다. AI 지침의 원본은 이 파일 하나다. 같은 디렉터리의 `CLAUDE.md`는 이 파일을 `@` import 하는 두 줄짜리 파일이며 `scripts/sync-agent-docs.sh`가 관리한다. Claude 전용 지침도 여기에 적는다.
+
 <!-- readme-guidance: start -->
 ## README 작성 기준
 
@@ -34,6 +91,16 @@ Follow `akela/PROTOCOL.md` for every task.
 - 명령어, 코드, 파일 경로, 식별자, 오류·로그 원문은 번역하지 않고 그대로 인용한 뒤 한국어로 설명한다.
 - 프로젝트가 만드는 프로그램의 출력 언어는 이 규칙이 아니라 그 프로젝트의 SPEC을 따른다.
 <!-- readme-guidance: end -->
+
+<!-- project-readiness-command: start -->
+## 프로젝트 완료 검사
+
+하위 폴더에서 작업을 시작했더라도 완료 전에는 이 프로젝트 루트로 이동하여 다음 명령을 실행한다.
+```text
+node .project-check/project-readiness.js .
+```
+검사 실패를 해결하거나 미완료로 보고한다. 이 검사는 문서와 경로 연결을 확인하며 프로젝트 자체 테스트와 실제 동작 검증을 대신하지 않는다.
+<!-- project-readiness-command: end -->
 
 <!-- project-spec-guidance: start -->
 ## 사양 기반 개발 (SPEC)
@@ -157,13 +224,3 @@ CATEGORY는 대문자·숫자, NNN은 세 자리. 한 번 부여한 ID는 재사
 SPEC 내용을 `knowledge/`에 복제하지 않는다. knowledge는 Requirement ID를 **참조**만 한다
 (예: "REQ-EXPORT-001을 고칠 때 한글 파일명 encoding 회귀를 항상 확인한다").
 <!-- project-spec-guidance: end -->
-
-<!-- project-readiness-command: start -->
-## 프로젝트 완료 검사
-
-하위 폴더에서 작업을 시작했더라도 완료 전에는 이 프로젝트 루트로 이동하여 다음 명령을 실행한다.
-```text
-node .project-check/project-readiness.js .
-```
-검사 실패를 해결하거나 미완료로 보고한다. 이 검사는 문서와 경로 연결을 확인하며 프로젝트 자체 테스트와 실제 동작 검증을 대신하지 않는다.
-<!-- project-readiness-command: end -->

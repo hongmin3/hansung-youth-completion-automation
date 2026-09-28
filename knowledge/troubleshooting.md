@@ -1,7 +1,19 @@
-# 트러블슈팅
+# Troubleshooting
+
+## Business invariants
+<!-- akela: id=business-invariants scope=develop,test,operate tier=should -->
+교육과정 허용·제외 목록, 동일인 판정, 중복 방지, 디모데 저장 성공 후 Sheet 체크 순서를 근거 없이 변경하지 않는다.
+
+## UI selector changes
+<!-- akela: id=selector-changes scope=develop,test,operate tier=should -->
+디모데 UI selector는 실제 화면 변화나 재현 가능한 실패 증거를 확보한 뒤 최소 범위로 변경한다.
+
+## Secret and outputs
+<!-- akela: id=secrets scope=all tier=must -->
+`config.py`, credentials/token JSON, cookie, 계정, `output/`, `user_data/`, debug HTML·image, 실행 log를 Knowledge·Evidence·응답·Git에 복사하지 않는다.
 
 ## 시트 요청이 401 Unauthorized
-<!-- akela: id=401-unauthorized -->
+<!-- akela: id=401-unauthorized scope=auth-troubleshoot,operate tier=should -->
 
 - 원인: `GOOGLE_COOKIES`(쿠키 방식)가 만료됨.
 - 조치: `credentials.json`(Google Sheets OAuth Desktop Client)을 준비해 OAuth 방식으로 실행한다.
@@ -10,7 +22,7 @@
 - `credentials.json`, `token.json`은 절대 GitHub에 커밋하지 않는다(.gitignore 대상).
 
 ## 검색 결과가 있는데 정확한교인없음
-<!-- akela: id=no-exact-match-found -->
+<!-- akela: id=no-exact-match-found scope=matching-debug,operate tier=should -->
 
 체크리스트:
 
@@ -19,19 +31,19 @@
 - 팀 이름의 오탈자나 디모데 상 소속 변경 여부를 확인한 뒤 시트를 정정하고 다시 실행한다.
 
 ## 동일 과정이 이미 있음 (이미입력됨)
-<!-- akela: id=already-registered -->
+<!-- akela: id=already-registered scope=operate,matching-debug tier=should -->
 
 - 이는 오류가 아니라 정상 동작이다. 추가 저장하지 않고 상태를 `이미입력됨`으로 남긴 뒤 시트의 `입력여부`만 체크한다.
 
 ## 디모데 화면 변경으로 선택자를 찾지 못함
-<!-- akela: id=selector-broken -->
+<!-- akela: id=selector-broken scope=develop,operate tier=should -->
 
 - 즉시 실제 실행(`--execute`)을 중단하고 드라이런부터 다시 확인한다.
 - `completion_automation.py`의 검색·상세 창 선택자를 새 화면 구조에 맞게 수정해야 한다.
 - 단, `기초반`/`예배학교`/`결혼예비학교` 관련 코드는 이 선택자 수정 작업 중에도 사용자의 별도 명시적 요청 없이는 변경하지 않는다(정책은 `course-policy.md` 참조).
 
 ## 결과 상태 코드 참고
-<!-- akela: id=status-codes-reference -->
+<!-- akela: id=status-codes-reference scope=operate,test,develop tier=should -->
 
 | 상태 | 의미 |
 |---|---|

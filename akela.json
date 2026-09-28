@@ -1,10 +1,5 @@
 {
   "domain": "default",
-  "activities": [
-    "matching-debug",
-    "policy-change",
-    "auth-troubleshoot"
-  ],
   "knowledge": [
     {
       "path": "knowledge",
@@ -14,84 +9,13 @@
   ],
   "learnings": "akela/LEARNINGS.md",
   "runs": ".akela/runs",
-  "compiler": {
-    "scope": {
-      "REF-course-policy#allowed-courses": {
-        "add": [
-          "policy-change"
-        ]
-      },
-      "REF-course-policy#recommended-run-order": {
-        "add": [
-          "policy-change",
-          "matching-debug"
-        ]
-      },
-      "REF-course-policy#other-run-options": {
-        "add": [
-          "policy-change"
-        ]
-      },
-      "REF-course-policy#rerun-dedup": {
-        "add": [
-          "policy-change",
-          "matching-debug"
-        ]
-      },
-      "REF-matching-rules#search-order": {
-        "add": [
-          "matching-debug"
-        ]
-      },
-      "REF-matching-rules#phone-match": {
-        "add": [
-          "matching-debug"
-        ]
-      },
-      "REF-matching-rules#name-group-match": {
-        "add": [
-          "matching-debug"
-        ]
-      },
-      "REF-matching-rules#duplicate-match-handling": {
-        "add": [
-          "matching-debug"
-        ]
-      },
-      "REF-matching-rules#duplicate-registration-prevention": {
-        "add": [
-          "matching-debug",
-          "policy-change"
-        ]
-      },
-      "REF-troubleshooting#401-unauthorized": {
-        "add": [
-          "auth-troubleshoot"
-        ]
-      },
-      "REF-troubleshooting#no-exact-match-found": {
-        "add": [
-          "matching-debug"
-        ]
-      },
-      "REF-troubleshooting#already-registered": {
-        "add": [
-          "matching-debug",
-          "policy-change"
-        ]
-      },
-      "REF-troubleshooting#selector-broken": {
-        "add": [
-          "auth-troubleshoot",
-          "matching-debug"
-        ]
-      },
-      "REF-troubleshooting#status-codes-reference": {
-        "add": [
-          "auth-troubleshoot",
-          "matching-debug"
-        ]
-      }
-    }
-  }
+  "activities": [
+    "develop",
+    "test",
+    "operate",
+    "matching-debug",
+    "policy-change",
+    "auth-troubleshoot"
+  ],
+  "compiler": {}
 }

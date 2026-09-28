@@ -1,7 +1,7 @@
 # 교육과정 정책 및 실행 순서
 
 ## 허용 교육과정
-<!-- akela: id=allowed-courses -->
+<!-- akela: id=allowed-courses scope=policy-change,develop,operate tier=should -->
 
 시트의 `구분` 값과 디모데에서 선택하는 과정은 다음과 같이 매핑된다.
 
@@ -23,7 +23,7 @@
 - 이 정책은 AI 에이전트를 포함한 어떤 작업자도 예외 없이 지켜야 하며, 사용자의 직접적이고 명시적인 지시 없이 임의로 판단해 코드를 수정하거나 제외 목록을 늘리거나 줄여서는 안 된다.
 
 ## 권장 실행 순서 (드라이런 → 1건 → 전체)
-<!-- akela: id=recommended-run-order -->
+<!-- akela: id=recommended-run-order scope=operate,test tier=should -->
 
 실제 등록 전에 반드시 아래 단계를 순서대로 거친다.
 
@@ -33,14 +33,14 @@
 4. **전체 실제 실행**: `python main.py --execute` — 검증이 끝난 뒤에만 전체 실행.
 
 ## 기타 실행 옵션
-<!-- akela: id=other-run-options -->
+<!-- akela: id=other-run-options scope=operate,develop tier=should -->
 
 - `--skip-phone-lookup`: 번호가 빈 사람에 대한 이름 기반 번호 보완 조회를 생략.
 - `--sheet-csv PATH`: Google Sheet 대신 전체 내보내기 CSV를 입력으로 사용. 원본 시트의 전체 행 순서를 유지한 CSV여야 `시트행` 번호가 맞는다.
 - `--defer-sheet-checks`: OAuth가 없는 긴급 운영에서 시트 체크를 외부 작업으로 미룸. 디모데 입력 후 별도 방식으로 성공 행을 체크할 운영자가 있을 때만 사용하며, 일반 실행에는 권장하지 않는다.
 
 ## 재실행과 중복 방지
-<!-- akela: id=rerun-dedup -->
+<!-- akela: id=rerun-dedup scope=operate,matching-debug,develop tier=should -->
 
 - `입력여부`가 이미 체크된 행은 처음부터 건너뛴다.
 - 실패한 사람(정확한교인없음, 교인복수일치, 교육과정매핑없음)은 체크하지 않으므로 시트 정보를 수정한 뒤 다시 실행할 수 있다.
