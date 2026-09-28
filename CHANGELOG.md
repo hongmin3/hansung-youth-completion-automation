@@ -53,6 +53,8 @@ Semantic Versioning은 강제하지 않는다. 프로젝트에 Versioning 정책
 
 ### Fixed
 
+- Windows에서도 자체 검증이 돌도록 고쳤다. `botyard.json`의 검증 명령을 `node scripts/run-tests.mjs`로 바꿨다. 이 스크립트는 macOS/Linux 가상환경, Windows 가상환경, python3·python 순으로 실제로 실행되는 Python 3을 골라 `unittest`를 돌린다(Windows에서는 멈추는 Store 별칭 `python3`보다 `python`을 먼저 쓴다).
+- 저장소 위생 테스트가 Windows 한국어 환경(CP949)에서 git의 UTF-8 출력(한글 파일명)을 읽지 못해 실패하던 문제. git 출력을 UTF-8로 읽는다.
 ### Removed
 
 ## [1.0.0] - 2026-09-19

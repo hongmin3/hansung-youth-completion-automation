@@ -22,7 +22,7 @@ PROJECT = pathlib.Path(__file__).resolve().parents[1]
 def tracked_files():
     """git이 추적 중인 파일. 추적되지 않는 로컬 파일은 이 요구사항의 대상이 아니다."""
     out = subprocess.run(["git", "-C", str(PROJECT), "ls-files", "-z"],
-                         capture_output=True, text=True, check=True).stdout
+                         capture_output=True, text=True, encoding="utf-8", check=True).stdout
     return [p for p in out.split("\0") if p]
 
 
@@ -66,7 +66,7 @@ class GitignoreCoverage(unittest.TestCase):
         # 여기서는 쓸 수 없다: "fatal: -z only makes sense with --stdin".)
         result = subprocess.run(["git", "-C", str(PROJECT), "-c", "core.quotepath=false",
                                  "check-ignore", "--no-index", *probes],
-                                capture_output=True, text=True)
+                                capture_output=True, text=True, encoding="utf-8")
         ignored = {line for line in result.stdout.splitlines() if line}
         missing = [p for p in probes if p not in ignored]
         self.assertEqual(missing, [], f"git이 무시하지 않는 민감 경로: {missing}")
