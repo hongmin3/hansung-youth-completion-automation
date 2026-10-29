@@ -739,24 +739,24 @@ NFR-SEC-001, NFR-DATA-001
 
 | Requirement | Implementation | Test | Status |
 |---|---|---|---|
-| REQ-SHEET-001 | `completion_automation.py` (`load_sheet_rows`) | TEST-DRYRUN-001 (수동) | verified |
-| REQ-CLI-001 | `main.py`, `completion_automation.py` (`parse_args`, `main`) | TEST-DRYRUN-001 (수동) | verified |
-| REQ-FILTER-001 | `completion_automation.py` (`is_checked`, `course_map`, `process`) | TEST-DRYRUN-001 (수동) | verified |
-| REQ-MATCH-001 | `completion_automation.py` (`find_exact_person_card`) | TEST-DRYRUN-001 (수동) | verified |
-| REQ-MATCH-002 | `completion_automation.py` (`same_active_name_and_group`) | TEST-DRYRUN-001 (수동) | verified |
-| REQ-PHONE-001 | `completion_automation.py` (`enrich_phone`) | TEST-DRYRUN-001 (수동) | verified |
+| REQ-SHEET-001 | `completion_automation.py` (`load_sheet_rows`) | TEST-DRYRUN-001 (수동) | implemented |
+| REQ-CLI-001 | `main.py`, `completion_automation.py` (`parse_args`, `main`) | TEST-DRYRUN-001 (수동) | implemented |
+| REQ-FILTER-001 | `completion_automation.py` (`is_checked`, `course_map`, `process`) | TEST-DRYRUN-001 (수동) | implemented |
+| REQ-MATCH-001 | `completion_automation.py` (`find_exact_person_card`) | TEST-DRYRUN-001 (수동) | implemented |
+| REQ-MATCH-002 | `completion_automation.py` (`same_active_name_and_group`) | TEST-DRYRUN-001 (수동) | implemented |
+| REQ-PHONE-001 | `completion_automation.py` (`enrich_phone`) | TEST-DRYRUN-001 (수동) | implemented |
 | REQ-INPUT-001 | `completion_automation.py` (`process`) | TEST-DUP-001 (수동) | implemented |
-| REQ-INPUT-002 | `completion_automation.py` (`process`) | TEST-EXEC-001 (수동) | verified |
-| REQ-SHEET-002 | `completion_automation.py` (`update_sheet_result`) | TEST-EXEC-001 (수동) | verified |
-| REQ-REPORT-001 | `completion_automation.py` (`save_plan`, `log`) | TEST-DRYRUN-001 (수동) | verified |
-| NFR-SEC-001 | `.gitignore`, `config.example.py` | TEST-HYGIENE-001 | verified |
-| NFR-DATA-001 | `.gitignore`, `completion_automation.py` (`update_sheet_result`) | TEST-HYGIENE-001 | verified |
+| REQ-INPUT-002 | `completion_automation.py` (`process`) | TEST-EXEC-001 (수동) | implemented |
+| REQ-SHEET-002 | `completion_automation.py` (`update_sheet_result`) | TEST-EXEC-001 (수동) | implemented |
+| REQ-REPORT-001 | `completion_automation.py` (`save_plan`, `log`) | TEST-DRYRUN-001 (수동) | implemented |
+| NFR-SEC-001 | `.gitignore`, `config.example.py` | `tests/test_repository_hygiene.py` | verified |
+| NFR-DATA-001 | `.gitignore`, `completion_automation.py` (`update_sheet_result`) | `tests/test_repository_hygiene.py` | verified |
 | NFR-OPS-001 | `completion_automation.py` (`main`, `search_person_cards`) | TEST-DRYRUN-001 (수동) | implemented |
 
-Status 값: `draft` (사양만 있음) / `implemented` / `verified` (실제 실행까지 확인) /
+Status 값: `draft` (사양만 있음) / `implemented` / `verified` (게이트가 실행하는 자동 테스트로 확인) /
 `deprecated`.
 
-`verified`의 근거는 `README.md`에 적힌 2026-08-11 실제 실행이다. 그 실행의 결과는 다음과 같다.
+과거 수동 실행 근거는 `README.md`에 적힌 2026-08-11 기록이다. 자동 테스트가 연결되지 않은 기능은 `implemented`로 표시한다. 그 실행의 결과는 다음과 같다.
 
 - 대상 206행
 - 체크 174행

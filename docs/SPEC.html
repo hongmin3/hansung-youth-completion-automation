@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="botyard render-spec-html v7">
 <meta name="spec-html-renderer" content="v7">
-<meta name="spec-source-sha256" content="c63129bc3807aeb854dfebc650939692f7977e0689527ca6ce70cf7052c63970">
+<meta name="spec-source-sha256" content="37f83c0d8db688af53c544e8b2456b618d099749a771d900b8f0ade04e93d5c5">
 <title>청년 양육 수료내역 디모데 자동입력 사양서</title>
 <style>:root{--bg:#f7f8fa;--panel:#fff;--text:#1d2330;--muted:#5d6678;--line:#e2e6ee;--accent:#2f6fde;--code:#f1f3f7;
 --req:#2f6fde;--nfr:#8a4fd8;--test:#15907a;--draft:#8a93a6;--implemented:#c98a12;--verified:#1f9d55;--deprecated:#c2413a;--active:#2f6fde;
@@ -93,7 +93,7 @@ footer{max-width:1800px;margin:0 auto;padding:8px 24px 40px;color:var(--muted);f
 <header class="top">
 <h1>청년 양육 수료내역 디모데 자동입력 사양서</h1>
 <div class="chips"><span class="chip"><span>Document Version</span><b>1.1.0</b></span><span class="chip"><span>Project Version</span><b>1.0.0</b></span><span class="chip"><span>Last Updated</span><b>2026-09-25</b></span><span class="chip"><span>Status</span><b><span class="badge st-active">active</span></b></span><span class="chip"><span>Owner</span><b>디모데 입력 운영 담당자 (역할명)</b></span></div>
-<div class="stats"><div class="stat"><b>10</b><span>기능 요구사항 REQ</span></div><div class="stat"><b>3</b><span>비기능 NFR</span></div><div class="stat"><b>5</b><span>테스트 TEST</span></div><div class="stat st-implemented"><b>2</b><span>implemented</span></div><div class="stat st-verified"><b>11</b><span>verified</span></div></div>
+<div class="stats"><div class="stat"><b>10</b><span>기능 요구사항 REQ</span></div><div class="stat"><b>3</b><span>비기능 NFR</span></div><div class="stat"><b>5</b><span>테스트 TEST</span></div><div class="stat st-implemented"><b>11</b><span>implemented</span></div><div class="stat st-verified"><b>2</b><span>verified</span></div></div>
 </header>
 <div class="layout">
 <nav class="toc" aria-label="목차">
@@ -139,26 +139,26 @@ footer{max-width:1800px;margin:0 auto;padding:8px 24px 40px;color:var(--muted);f
 <thead><tr><th>ID</th><th>이름</th><th>상태</th><th>구현</th><th>테스트</th></tr></thead>
 <tbody>
 <tr class="group"><th colspan="5"><span class="gcode">SHEET</span> 시트 연동</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a></td><td data-label="이름">수료자 명단 읽기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>load_sheet_rows</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a></td><td data-label="이름">입력여부 체크 맞추기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a></td><td data-label="이름">수료자 명단 읽기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>load_sheet_rows</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a></td><td data-label="이름">입력여부 체크 맞추기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">CLI</span> 실행 옵션</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></td><td data-label="이름">읽기만 하는 기본 실행</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></td><td data-label="이름">읽기만 하는 기본 실행</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">FILTER</span> 대상 선별</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a></td><td data-label="이름">처리할 행 고르기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a></td><td data-label="이름">처리할 행 고르기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">MATCH</span> 교인 매칭</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a></td><td data-label="이름">전화번호로 교인 찾기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>find_exact_person_card</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a></td><td data-label="이름">이름과 소속으로 교인 찾기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a></td><td data-label="이름">전화번호로 교인 찾기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>find_exact_person_card</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a></td><td data-label="이름">이름과 소속으로 교인 찾기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">PHONE</span> 전화번호 보완</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a></td><td data-label="이름">비어 있는 전화번호 채우기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>enrich_phone</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a></td><td data-label="이름">비어 있는 전화번호 채우기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>enrich_phone</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">INPUT</span> 수료내역 입력</th></tr>
 <tr><td data-label="ID"><a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a></td><td data-label="이름">같은 수료내역 두 번 등록하지 않기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>process</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a> (수동)</td></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a></td><td data-label="이름">수료내역 등록</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>process</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a></td><td data-label="이름">수료내역 등록</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>process</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">REPORT</span> 결과 보고</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></td><td data-label="이름">입력하지 않은 이유 알리기</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
+<tr><td data-label="ID"><a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></td><td data-label="이름">입력하지 않은 이유 알리기</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">NFR SEC</span> 보안</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a></td><td data-label="이름">인증 정보는 저장소 밖에 둔다</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>.gitignore</code>, <code>config.example.py</code></td><td data-label="테스트"><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td></tr>
+<tr><td data-label="ID"><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a></td><td data-label="이름">인증 정보는 저장소 밖에 둔다</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>.gitignore</code>, <code>config.example.py</code></td><td data-label="테스트"><code>tests/test_repository_hygiene.py</code></td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">NFR DATA</span> 개인정보</th></tr>
-<tr><td data-label="ID"><a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></td><td data-label="이름">개인정보는 이 컴퓨터 안에서만 다룬다</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td></tr>
+<tr><td data-label="ID"><a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></td><td data-label="이름">개인정보는 이 컴퓨터 안에서만 다룬다</td><td data-label="상태"><span class="badge st-verified">verified</span></td><td data-label="구현"><code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="테스트"><code>tests/test_repository_hygiene.py</code></td></tr>
 <tr class="group"><th colspan="5"><span class="gcode">NFR OPS</span> 운영</th></tr>
 <tr><td data-label="ID"><a class="idref" href="#NFR-OPS-001">NFR-OPS-001</a></td><td data-label="이름">사람이 지켜보며 직접 실행한다</td><td data-label="상태"><span class="badge st-implemented">implemented</span></td><td data-label="구현"><code>completion_automation.py</code> (<code>main</code>, <code>search_person_cards</code>)</td><td data-label="테스트"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td></tr>
 </tbody>
@@ -342,7 +342,12 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </table></div>
 <section class="card kind-req" id="REQ-SHEET-001">
 <h3><span class="idtag">REQ-SHEET-001</span> 수료자 명단 읽기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>load_sheet_rows</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>load_sheet_rows</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span></div>
+<details class="history"><summary>변경 이력 1</summary>
+<ul>
+<li><span class="hist">[1.0.0] - 2026-09-19 · Added</span> 2026-10-29: <a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a>·<a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>: 수동 검증과 자동 검증의 상태를 구분하고 위생 검사 파일을 추적성에 연결했다.</li>
+</ul>
+</details>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p><span class="term" title="교육을 마친 사람을 모아 둔 Google Sheet 표다. 열은 구분 / 군 / 팀 / 이름 / 핸드폰 / 담당자 / 입력여부 순서다." tabindex="0">수료자 명단</span>을 정해진 열 순서로 읽는다. 각 행에는 원본 시트의 행 번호를 함께 붙여 둔다.</p>
 </div></section>
@@ -383,7 +388,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-CLI-001">
 <h3><span class="idtag">REQ-CLI-001</span> 읽기만 하는 기본 실행</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a>, <a class="idref" href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a>, <a class="idref" href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>기본값은 안전한 쪽, 곧 읽기만 하는 쪽에 둔다. 실제로 데이터를 바꾸는 일은 옵션을 직접 줄 때만
 일어난다.</p>
@@ -421,7 +426,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-FILTER-001">
 <h3><span class="idtag">REQ-FILTER-001</span> 처리할 행 고르기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>이미 처리한 행과 입력하면 안 되는 교육과정은 처리 대상에서 뺀다.</p>
 </div></section>
@@ -466,7 +471,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-MATCH-001">
 <h3><span class="idtag">REQ-MATCH-001</span> 전화번호로 교인 찾기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>find_exact_person_card</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>find_exact_person_card</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span></div>
 <details class="history"><summary>변경 이력 1</summary>
 <ul>
 <li><span class="hist">[Unreleased] · Changed</span> <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>/002: 동일인 판정 기준을 코드에 맞춰 문서 정리 — <code>팀</code>은 비교하지 않고
@@ -507,7 +512,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-MATCH-002">
 <h3><span class="idtag">REQ-MATCH-002</span> 이름과 소속으로 교인 찾기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>, <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a>, <a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>전화번호로 확정하지 못한 사람은 이름과 소속으로 확정한다. 조금이라도 애매하면 입력하지 않는다.</p>
 </div></section>
@@ -549,7 +554,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-PHONE-001">
 <h3><span class="idtag">REQ-PHONE-001</span> 비어 있는 전화번호 채우기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>enrich_phone</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>enrich_phone</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a>, <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>시트에 전화번호가 비어 있으면 <span class="term" title="교인 정보를 다루는 웹 화면이다. 이 자동화가 수료내역을 입력하는 곳이다." tabindex="0">디모데</span>에서 번호를 찾아 채운다. 그러면 사람을 더 정확히 찾을 수 있다.</p>
 </div></section>
@@ -609,7 +614,12 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-INPUT-002">
 <h3><span class="idtag">REQ-INPUT-002</span> 수료내역 등록</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>process</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span></div>
+<details class="history"><summary>변경 이력 1</summary>
+<ul>
+<li><span class="hist">[1.0.0] - 2026-09-19 · Added</span> 2026-10-29: <a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a>·<a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a>: 수동 검증과 자동 검증의 상태를 구분하고 위생 검사 파일을 추적성에 연결했다.</li>
+</ul>
+</details>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>확정된 교인에게 정해진 값으로 <span class="term" title="디모데에 교인마다 남기는 교육과정 수료 기록이다." tabindex="0">수료내역</span>을 등록한다.</p>
 </div></section>
@@ -650,7 +660,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-SHEET-002">
 <h3><span class="idtag">REQ-SHEET-002</span> 입력여부 체크 맞추기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>update_sheet_result</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>update_sheet_result</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a>, <a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>시트의 <code class="term" title="시트 G열의 체크박스다. 체크되어 있으면 디모데에 등록되어 있다는 뜻이다." tabindex="0">입력여부</code> 체크가 &quot;<span class="term" title="교인 정보를 다루는 웹 화면이다. 이 자동화가 수료내역을 입력하는 곳이다." tabindex="0">디모데</span>에 정말 등록되어 있다&quot;는 뜻이 되도록 유지한다.</p>
 </div></section>
@@ -683,7 +693,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-req" id="REQ-REPORT-001">
 <h3><span class="idtag">REQ-REPORT-001</span> 입력하지 않은 이유 알리기</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
+<div class="card-meta"><span class="badge st-implemented">implemented</span><span class="meta"><b>구현</b> <code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a>, <a class="idref" href="#TEST-SYNTAX-001">TEST-SYNTAX-001</a></span><span class="meta nohist"><b>변경 이력</b> CHANGELOG에 이 ID로 기록된 변경 없음</span></div>
 <section class="field"><h4>목적</h4><div class="field-body">
 <p>무엇을 왜 입력하지 않았는지 실행이 끝난 뒤 사람이 확인할 수 있게 한다.</p>
 </div></section>
@@ -730,7 +740,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 <h2>6. 비기능 요구사항</h2>
 <section class="card kind-nfr" id="NFR-SEC-001">
 <h3><span class="idtag">NFR-SEC-001</span> 인증 정보는 저장소 밖에 둔다</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>.gitignore</code>, <code>config.example.py</code></span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span></div>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>.gitignore</code>, <code>config.example.py</code></span><span class="meta"><b>테스트</b> <code>tests/test_repository_hygiene.py</code></span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span></div>
 <details class="history"><summary>변경 이력 1</summary>
 <ul>
 <li><span class="hist">[Unreleased] · Added</span> <a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a> / <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a>: 저장소 위생 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>,
@@ -760,7 +770,7 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 </section>
 <section class="card kind-nfr" id="NFR-DATA-001">
 <h3><span class="idtag">NFR-DATA-001</span> 개인정보는 이 컴퓨터 안에서만 다룬다</h3>
-<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</span><span class="meta"><b>테스트</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span></div>
+<div class="card-meta"><span class="badge st-verified">verified</span><span class="meta"><b>구현</b> <code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</span><span class="meta"><b>테스트</b> <code>tests/test_repository_hygiene.py</code></span><span class="meta"><b>참조됨</b> <a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></span></div>
 <details class="history"><summary>변경 이력 1</summary>
 <ul>
 <li><span class="hist">[Unreleased] · Added</span> <a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a> / <a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a>: 저장소 위생 자동 검사(<a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a>,
@@ -1050,24 +1060,24 @@ CSV 내려받기(export)를 쓴다. 쓸 때는 Sheets API만 쓴다.</li>
 <div class="table-wrap"><table class="responsive">
 <thead><tr><th>Requirement</th><th>Implementation</th><th>Test</th><th>Status</th></tr></thead>
 <tbody>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>load_sheet_rows</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></td><td data-label="Implementation"><code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>find_exact_person_card</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>enrich_phone</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-SHEET-001">REQ-SHEET-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>load_sheet_rows</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-CLI-001">REQ-CLI-001</a></td><td data-label="Implementation"><code>main.py</code>, <code>completion_automation.py</code> (<code>parse_args</code>, <code>main</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-FILTER-001">REQ-FILTER-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>is_checked</code>, <code>course_map</code>, <code>process</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-MATCH-001">REQ-MATCH-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>find_exact_person_card</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-MATCH-002">REQ-MATCH-002</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>same_active_name_and_group</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-PHONE-001">REQ-PHONE-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>enrich_phone</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
 <tr><td data-label="Requirement"><a class="idref" href="#REQ-INPUT-001">REQ-INPUT-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>process</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DUP-001">TEST-DUP-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>process</code>)</td><td data-label="Test"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="Test"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a></td><td data-label="Implementation"><code>.gitignore</code>, <code>config.example.py</code></td><td data-label="Test"><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
-<tr><td data-label="Requirement"><a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></td><td data-label="Implementation"><code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="Test"><a class="idref" href="#TEST-HYGIENE-001">TEST-HYGIENE-001</a></td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-INPUT-002">REQ-INPUT-002</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>process</code>)</td><td data-label="Test"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-SHEET-002">REQ-SHEET-002</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="Test"><a class="idref" href="#TEST-EXEC-001">TEST-EXEC-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#REQ-REPORT-001">REQ-REPORT-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>save_plan</code>, <code>log</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#NFR-SEC-001">NFR-SEC-001</a></td><td data-label="Implementation"><code>.gitignore</code>, <code>config.example.py</code></td><td data-label="Test"><code>tests/test_repository_hygiene.py</code></td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
+<tr><td data-label="Requirement"><a class="idref" href="#NFR-DATA-001">NFR-DATA-001</a></td><td data-label="Implementation"><code>.gitignore</code>, <code>completion_automation.py</code> (<code>update_sheet_result</code>)</td><td data-label="Test"><code>tests/test_repository_hygiene.py</code></td><td data-label="Status"><span class="badge st-verified">verified</span></td></tr>
 <tr><td data-label="Requirement"><a class="idref" href="#NFR-OPS-001">NFR-OPS-001</a></td><td data-label="Implementation"><code>completion_automation.py</code> (<code>main</code>, <code>search_person_cards</code>)</td><td data-label="Test"><a class="idref" href="#TEST-DRYRUN-001">TEST-DRYRUN-001</a> (수동)</td><td data-label="Status"><span class="badge st-implemented">implemented</span></td></tr>
 </tbody>
 </table></div>
-<p>Status 값: <code>draft</code> (사양만 있음) / <code>implemented</code> / <code>verified</code> (실제 실행까지 확인) /
+<p>Status 값: <code>draft</code> (사양만 있음) / <code>implemented</code> / <code>verified</code> (게이트가 실행하는 자동 테스트로 확인) /
 <code>deprecated</code>.</p>
-<p><code>verified</code>의 근거는 <code>README.md</code>에 적힌 2026-08-11 실제 실행이다. 그 실행의 결과는 다음과 같다.</p>
+<p>과거 수동 실행 근거는 <code>README.md</code>에 적힌 2026-08-11 기록이다. 자동 테스트가 연결되지 않은 기능은 <code>implemented</code>로 표시한다. 그 실행의 결과는 다음과 같다.</p>
 <ul>
 <li>대상 206행</li>
 <li>체크 174행</li>
